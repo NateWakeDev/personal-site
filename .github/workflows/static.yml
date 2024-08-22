@@ -3,7 +3,7 @@ name: Deploy Next.js site to GitHub Pages
 on:
   push:
     branches:
-      - main  # Change this to your main development branch if different
+      - main  # Replace this with your main development branch
 
 jobs:
   build-and-deploy:
@@ -14,9 +14,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  # Use v3 of setup-node
         with:
-          node-version: '16'
+          node-version: '18.17.0'  # Specify Node.js version 18.17.0 or higher
 
       - name: Install dependencies
         run: npm install
@@ -28,4 +28,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          publish_dir: ./out  # Deploys contents of 'out' to 'gh-pages' branch
