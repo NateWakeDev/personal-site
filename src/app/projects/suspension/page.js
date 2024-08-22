@@ -6,7 +6,7 @@ import { OrbitControls, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
 function SuspensionModel({ currentBump, isPaused }) {
-  const { scene, animations } = useGLTF('/models/SAE-Baja-Suspension-Wheel.glb');
+  const { scene, animations } = useGLTF('./models/SAE-Baja-Suspension-Wheel.glb');
   const mixer = useRef();
   const action = useRef();
   const jumpPhase = useRef(1);
