@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+  "dev": "next dev",
+  "build": "next build",
+  "deploy": "next build && gh-pages -d out"
   },
   "dependencies": {
     "@react-three/drei": "^9.111.2",
