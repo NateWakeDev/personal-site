@@ -152,7 +152,7 @@ export default function SuspensionProject() {
         onClick={() => handleBumpChange('Normal')}
         className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700"
       >
-        Normal Mode
+        Normal
       </button>
       <button
         onClick={() => handleBumpChange('SmallBounce')}
