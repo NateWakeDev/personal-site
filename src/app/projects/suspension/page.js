@@ -158,7 +158,7 @@ export default function SuspensionProject() {
         onClick={() => handleBumpChange('SmallBounce')}
         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
       >
-        Slow RollingBounce
+        Slow Rolling
       </button>
       <button
         onClick={() => handleBumpChange('SharpBumps')}
