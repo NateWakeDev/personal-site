@@ -39,7 +39,7 @@ const HomePage = () => {
           <p className="italic">Jan. 2021 &#45; Present, Huntington Beach, CA</p>
           <ul className="list-disc pl-5">
             <li>Developed Python tooling to automate tasks, optimizing output.</li>
-            <li>Performed data analysis using Excel's visualization tools.</li>
+            <li>Performed data analysis using Excel&apos;s visualization tools.</li>
             <li>Maintained backend price management software.</li>
             <li>Managed business marketing initiatives to drive sales and generate leads.</li>
           </ul>
