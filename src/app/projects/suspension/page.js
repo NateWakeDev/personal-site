@@ -144,7 +144,7 @@ export default function SuspensionProject() {
           <ambientLight intensity={0.75} />
           <directionalLight position={[0, 2, 10]} intensity={1} />
           <SuspensionModel currentBump={currentBump} isPaused={isPaused} />
-          <OrbitControls />
+          <OrbitControls enableRotate={false} enableZoom={false} enablePan={false} />
         </Canvas>
       </div>
           <div className="flex justify-center mt-4 space-x-4">
