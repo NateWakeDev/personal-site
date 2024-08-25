@@ -24,10 +24,47 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px; /* Limit the width to a maximum */
+  padding: 0 1rem; /* Add some padding to prevent content from touching the screen edges */
+  margin: 0 auto; /* Center the container horizontally */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+img, canvas {
+  max-width: 100%; /* Scale images and canvas to fit their containers */
+  height: auto; /* Maintain aspect ratio */
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* Responsive Grid Settings */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

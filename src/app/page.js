@@ -51,6 +51,7 @@ const HomePage = () => {
         <ul className="list-disc pl-5">
           <li>Python</li>
           <li>C</li>
+          <li>JavaScript</li>
           <li>Automation</li>
           <li>Data Visualization</li>
           <li>Software Design</li>
