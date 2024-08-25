@@ -1,12 +1,40 @@
-import React from 'react';
+"use client"; // Ensure this is a client component
+
+import React, { useState, useEffect } from 'react';
 
 const HomePage = () => {
+  // Array of phrases to rotate through
+  const phrases = [
+    'Software Developer',
+    'Python & C Specialist',
+    'Automation Enthusiast',
+    'Data Visualization Specialist',
+    '3D Printing Hobbyist',
+    'Photography & Videography Enthusiast',
+    'CSULB SAE Data Acquisitions Lead',
+  ];
+
+  // State to keep track of the current phrase
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+
+  // Use effect to rotate phrases at intervals
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
+    }, 3000); // Change phrase every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-20">
-        <h1 className="text-5xl font-bold text-center">Nathan J. Wakefield</h1>
-        <p className="text-center mt-4 text-xl">Software Developer & Automation Enthusiast</p>
+        <h1 className="text-5xl font-bold text-center">Nathan Wakefield</h1>
+        {/* Rotating Text Line */}
+        <p className="text-center mt-4 text-xl">
+          {phrases[currentPhraseIndex]}
+        </p>
       </div>
 
       {/* Introduction */}
@@ -87,7 +115,7 @@ const HomePage = () => {
         <h2 className="text-2xl font-bold mb-4">Education</h2>
         <div>
           <h3 className="text-xl font-bold">California State University, Long Beach</h3>
-          <p className="italic">B.S. in Computer Science, August 2019 &#45 December 2024</p>
+          <p className="italic">B.S. in Computer Science, August 2019 &#45; December 2024</p>
           <p>Relevant Coursework: Databases, Programming Language Principles, Algorithms, Data Structures, Object-Oriented Design, Python, Software Design Principles</p>
         </div>
       </div>

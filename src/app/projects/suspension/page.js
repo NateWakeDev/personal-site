@@ -5,132 +5,242 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
-function SuspensionModel({ currentBump, isPaused }) {
-  const { scene, animations } = useGLTF('../models/SAE-Baja-Suspension-Wheel.glb');
-  const mixer = useRef();
-  const action = useRef();
-  const jumpPhase = useRef(1);
+function SuspensionModel({ currentBumpSuspension, isPausedSuspension }) {
+  const { scene: sceneSuspension, animations: animationsSuspension } = useGLTF('../models/SAE-Baja-Suspension-Wheel.glb');
+  const mixerSuspension = useRef();
+  const actionSuspension = useRef();
+  const jumpPhaseSuspension = useRef(1);
 
   useEffect(() => {
-    if (animations.length) {
+    if (animationsSuspension.length) {
       // Reset the mixer and action when the bump type changes
-      if (mixer.current) mixer.current.stopAllAction();
-      mixer.current = new THREE.AnimationMixer(scene);
-      action.current = mixer.current.clipAction(animations[0]);
+      if (mixerSuspension.current) mixerSuspension.current.stopAllAction();
+      mixerSuspension.current = new THREE.AnimationMixer(sceneSuspension);
+      actionSuspension.current = mixerSuspension.current.clipAction(animationsSuspension[0]);
 
-      console.log("Animation Duration:", action.current.getClip().duration);
+      console.log("Animation Duration:", actionSuspension.current.getClip().duration);
 
-      if (currentBump === 'Normal') {
-        action.current.time = 1; // Start at 1 seconds
-        action.current.setLoop(THREE.LoopRepeat, Infinity); // Loop infinitely
-        action.current.timeScale = 1; // Play at 1x speed
-        action.current.play(); // Start playing the action
-      } else if (currentBump === 'SmallBounce') {
-        action.current.time = 5; // Start at 4 seconds
-        action.current.setLoop(THREE.LoopOnce, 0); // Loop once, we'll manually control the ping-pong
-        action.current.timeScale = 2; // Play at 2x speed
-        action.current.play(); // Start playing the action
-      } else if (currentBump === 'SharpBumps') {
-        action.current.time = 4; // Start at 3 seconds
-        action.current.setLoop(THREE.LoopOnce, 0); // Loop once, we'll manually control the ping-pong
-        action.current.timeScale = 8; // Play at 8x speed
-        action.current.play(); // Start playing the action
-      } else if (currentBump === 'Jump') {
-        action.current.time = 6; // Start at 5 seconds
-        action.current.timeScale = 1; // Start by moving at 1x speed
-        jumpPhase.current = 1; // Reset to Phase 1 of the jump sequence
-        action.current.play(); // Start playing the action
+      if (currentBumpSuspension === 'Normal') {
+        actionSuspension.current.time = 1; // Start at 1 second
+        actionSuspension.current.setLoop(THREE.LoopRepeat, Infinity); // Loop infinitely
+        actionSuspension.current.timeScale = 1; // Play at 1x speed
+        actionSuspension.current.play(); // Start playing the action
+      } else if (currentBumpSuspension === 'SmallBounce') {
+        actionSuspension.current.time = 5; // Start at 5 seconds
+        actionSuspension.current.setLoop(THREE.LoopOnce, 0); // Loop once, manually control ping-pong
+        actionSuspension.current.timeScale = 2; // Play at 2x speed
+        actionSuspension.current.play(); // Start playing the action
+      } else if (currentBumpSuspension === 'SharpBumps') {
+        actionSuspension.current.time = 4; // Start at 4 seconds
+        actionSuspension.current.setLoop(THREE.LoopOnce, 0); // Loop once, manually control ping-pong
+        actionSuspension.current.timeScale = 8; // Play at 8x speed
+        actionSuspension.current.play(); // Start playing the action
+      } else if (currentBumpSuspension === 'Jump') {
+        actionSuspension.current.time = 6; // Start at 6 seconds
+        actionSuspension.current.timeScale = 1; // Start by moving at 1x speed
+        jumpPhaseSuspension.current = 1; // Reset to Phase 1 of the jump sequence
+        actionSuspension.current.play(); // Start playing the action
       }
     }
-  }, [animations, scene, currentBump]);
+  }, [animationsSuspension, sceneSuspension, currentBumpSuspension]);
 
   useEffect(() => {
-    if (action.current) {
-      action.current.paused = isPaused;
+    if (actionSuspension.current) {
+      actionSuspension.current.paused = isPausedSuspension;
     }
-  }, [isPaused]);
+  }, [isPausedSuspension]);
 
   useFrame((state, delta) => {
-    if (mixer.current && !isPaused) {
-      const currentTime = action.current.time;
+    if (mixerSuspension.current && !isPausedSuspension) {
+      const currentTimeSuspension = actionSuspension.current.time;
 
-        if (currentBump === 'Normal') {
-            // If the animation reaches 5 seconds, reverse the direction
-            if (currentTime >= 9) {
-                action.current.timeScale = -1; // Reverse at 1x speed
-            }
-            // If the animation goes back to 0 seconds, forward the direction
-            if (currentTime <= 1) {
-                action.current.timeScale = 1; // Forward at 1x speed
-            }
-        } else if (currentBump === 'SmallBounce') {
-            // If the animation reaches 7 seconds, reverse the direction
-            if (currentTime >= 7) {
-            action.current.timeScale = -2; // Reverse at 2x speed
-            }
-            // If the animation goes back to 5 seconds, forward the direction
-            if (currentTime <= 5) {
-            action.current.timeScale = 2; // Forward at 2x speed
-            }
-        } else if (currentBump === 'SharpBumps') {
-            // If the animation reaches 5 seconds, reverse the direction
-            if (currentTime >= 6) {
-            action.current.timeScale = -8; // Reverse at 8x speed
-            }
-            // If the animation goes back to 0 seconds, forward the direction
-            if (currentTime <= 4) {
-            action.current.timeScale = 8; // Forward at 8x speed
-            }
-        } else if (currentBump === 'Jump') {
-            switch (jumpPhase.current) {
-            case 1:
-                // Phase 1: Move from 5s to 7s at 1x speed
-                if (currentTime >= 7) {
-                jumpPhase.current = 2;
-                action.current.timeScale = -10; // Move super fast to 2s
-                }
-                break;
-            case 2:
-                // Phase 2: Drop to 2s at 10x speed
-                if (currentTime <= 2) {
-                jumpPhase.current = 3;
-                action.current.timeScale = 10; // Move back to 5s at 10x speed
-                }
-                break;
-            case 3:
-                // Phase 3: Move back up to 5s at 10x speed
-                if (currentTime >= 6) {
-                jumpPhase.current = 1; // Go back to Phase 1 and repeat
-                action.current.timeScale = 1; // Set speed back to 1x for Phase 1
-                }
-                break;
-            default:
-                break;
-            }
+      if (currentBumpSuspension === 'Normal') {
+        if (currentTimeSuspension >= 9) {
+          actionSuspension.current.timeScale = -1; // Reverse at 1x speed
         }
+        if (currentTimeSuspension <= 1) {
+          actionSuspension.current.timeScale = 1; // Forward at 1x speed
+        }
+      } else if (currentBumpSuspension === 'SmallBounce') {
+        if (currentTimeSuspension >= 7) {
+          actionSuspension.current.timeScale = -2; // Reverse at 2x speed
+        }
+        if (currentTimeSuspension <= 5) {
+          actionSuspension.current.timeScale = 2; // Forward at 2x speed
+        }
+      } else if (currentBumpSuspension === 'SharpBumps') {
+        if (currentTimeSuspension >= 6) {
+          actionSuspension.current.timeScale = -8; // Reverse at 8x speed
+        }
+        if (currentTimeSuspension <= 4) {
+          actionSuspension.current.timeScale = 8; // Forward at 8x speed
+        }
+      } else if (currentBumpSuspension === 'Jump') {
+        switch (jumpPhaseSuspension.current) {
+          case 1:
+            if (currentTimeSuspension >= 7) {
+              jumpPhaseSuspension.current = 2;
+              actionSuspension.current.timeScale = -10; // Move super fast to 2s
+            }
+            break;
+          case 2:
+            if (currentTimeSuspension <= 2) {
+              jumpPhaseSuspension.current = 3;
+              actionSuspension.current.timeScale = 10; // Move back to 5s at 10x speed
+            }
+            break;
+          case 3:
+            if (currentTimeSuspension >= 6) {
+              jumpPhaseSuspension.current = 1;
+              actionSuspension.current.timeScale = 1; // Set speed back to 1x for Phase 1
+            }
+            break;
+          default:
+            break;
+        }
+      }
 
-      mixer.current.update(delta);
+      mixerSuspension.current.update(delta);
     }
   });
 
-  // Center and scale the model (adjust these values as necessary)
-  scene.position.set(0, -5, 0);
-  scene.scale.set(3, 3, 3); // Modify scale here if needed
+  if (sceneSuspension) {
+    sceneSuspension.position.set(0, -5, 0);
+    sceneSuspension.scale.set(3, 3, 3); // Modify scale here if needed
+  }
 
-  return <primitive object={scene} />;
+  return <primitive object={sceneSuspension} />;
+}
+
+function SensorModel({ currentBumpSensor, isPausedSensor }) {
+  const { scene: sceneSensor, animations: animationsSensor } = useGLTF('../models/sensor.glb');
+  const mixerSensor = useRef();
+  const actionSensor = useRef();
+  const jumpPhaseSensor = useRef(1);
+
+  useEffect(() => {
+    if (animationsSensor.length) {
+      if (mixerSensor.current) mixerSensor.current.stopAllAction();
+      mixerSensor.current = new THREE.AnimationMixer(sceneSensor);
+      actionSensor.current = mixerSensor.current.clipAction(animationsSensor[0]);
+
+      console.log("Animation Duration:", actionSensor.current.getClip().duration);
+
+      if (currentBumpSensor === 'Normal') {
+        actionSensor.current.time = 1;
+        actionSensor.current.setLoop(THREE.LoopRepeat, Infinity);
+        actionSensor.current.timeScale = 1;
+        actionSensor.current.play();
+      } else if (currentBumpSensor === 'SmallBounce') {
+        actionSensor.current.time = 5;
+        actionSensor.current.setLoop(THREE.LoopOnce, 0);
+        actionSensor.current.timeScale = 2;
+        actionSensor.current.play();
+      } else if (currentBumpSensor === 'SharpBumps') {
+        actionSensor.current.time = 4;
+        actionSensor.current.setLoop(THREE.LoopOnce, 0);
+        actionSensor.current.timeScale = 8;
+        actionSensor.current.play();
+      } else if (currentBumpSensor === 'Jump') {
+        actionSensor.current.time = 6;
+        actionSensor.current.timeScale = 1;
+        jumpPhaseSensor.current = 1;
+        actionSensor.current.play();
+      }
+    }
+  }, [animationsSensor, sceneSensor, currentBumpSensor]);
+
+  useEffect(() => {
+    if (actionSensor.current) {
+      actionSensor.current.paused = isPausedSensor;
+    }
+  }, [isPausedSensor]);
+
+  useFrame((state, delta) => {
+    if (mixerSensor.current && !isPausedSensor) {
+      const currentTimeSensor = actionSensor.current.time;
+
+      if (currentBumpSensor === 'Normal') {
+        if (currentTimeSensor >= 9) {
+          actionSensor.current.timeScale = -1;
+        }
+        if (currentTimeSensor <= 1) {
+          actionSensor.current.timeScale = 1;
+        }
+      } else if (currentBumpSensor === 'SmallBounce') {
+        if (currentTimeSensor >= 7) {
+          actionSensor.current.timeScale = -2;
+        }
+        if (currentTimeSensor <= 5) {
+          actionSensor.current.timeScale = 2;
+        }
+      } else if (currentBumpSensor === 'SharpBumps') {
+        if (currentTimeSensor >= 6) {
+          actionSensor.current.timeScale = -8;
+        }
+        if (currentTimeSensor <= 4) {
+          actionSensor.current.timeScale = 8;
+        }
+      } else if (currentBumpSensor === 'Jump') {
+        switch (jumpPhaseSensor.current) {
+          case 1:
+            if (currentTimeSensor >= 7) {
+              jumpPhaseSensor.current = 2;
+              actionSensor.current.timeScale = -10;
+            }
+            break;
+          case 2:
+            if (currentTimeSensor <= 2) {
+              jumpPhaseSensor.current = 3;
+              actionSensor.current.timeScale = 10;
+            }
+            break;
+          case 3:
+            if (currentTimeSensor >= 6) {
+              jumpPhaseSensor.current = 1;
+              actionSensor.current.timeScale = 1;
+            }
+            break;
+          default:
+            break;
+        }
+      }
+
+      mixerSensor.current.update(delta);
+    }
+  });
+
+  if (sceneSensor) {
+    sceneSensor.position.set(-15, -5, 0);
+    sceneSensor.scale.set(1, 1, 1);
+  }
+
+  return <primitive object={sceneSensor} />;
 }
 
 export default function SuspensionProject() {
-  const [currentBump, setCurrentBump] = useState('Normal'); // Default to Normal Mode
-  const [isPaused, setIsPaused] = useState(false);
+  const [cameraPosition, setCameraPosition] = useState([4, 10, 8]);
+  const [currentBumpSuspension, setCurrentBumpSuspension] = useState('Normal');
+  const [currentBumpSensor, setCurrentBumpSensor] = useState('Normal');
+  const [isPausedSuspension, setIsPausedSuspension] = useState(false);
+  const [isPausedSensor, setIsPausedSensor] = useState(false);
 
-  const handleBumpChange = (bumpType) => {
-    setCurrentBump(bumpType);
-    setIsPaused(false); // Automatically resume the animation when a new bump is selected
+  const handleBumpChangeSuspension = (bumpType) => {
+    setCurrentBumpSuspension(bumpType);
+    setIsPausedSuspension(false);
   };
 
-  const togglePause = () => {
-    setIsPaused((prev) => !prev);
+  const togglePauseSuspension = () => {
+    setIsPausedSuspension((prev) => !prev);
+  };
+
+  const handleBumpChangeSensor = (bumpType) => {
+    setCurrentBumpSensor(bumpType);
+    setIsPausedSensor(false);
+  };
+
+  const togglePauseSensor = () => {
+    setIsPausedSensor((prev) => !prev);
   };
 
   return (
@@ -143,42 +253,47 @@ export default function SuspensionProject() {
         <Canvas>
           <ambientLight intensity={0.75} />
           <directionalLight position={[0, 2, 10]} intensity={1} />
-          <SuspensionModel currentBump={currentBump} isPaused={isPaused} />
+          <SuspensionModel currentBumpSuspension={currentBumpSuspension} isPausedSuspension={isPausedSuspension} />
           <OrbitControls enableRotate={false} enableZoom={false} enablePan={false} />
         </Canvas>
       </div>
-          <div className="flex justify-center mt-4 space-x-4">
-      <button
-        onClick={() => handleBumpChange('Normal')}
-        className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700"
-      >
-        Normal
-      </button>
-      <button
-        onClick={() => handleBumpChange('SmallBounce')}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-      >
-        Slow Rolling
-      </button>
-      <button
-        onClick={() => handleBumpChange('SharpBumps')}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-      >
-        Washboard Road
-      </button>
-      <button
-        onClick={() => handleBumpChange('Jump')}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-      >
-        Jump
-      </button>
-      <button
-        onClick={togglePause}
-        className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
-      >
-        {isPaused ? 'Resume' : 'Pause'} Animation
-      </button>
-    </div>
+
+      <div className="flex justify-center mt-4 space-x-4">
+        <button onClick={() => handleBumpChangeSuspension('Normal')} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Normal</button>
+        <button onClick={() => handleBumpChangeSuspension('SmallBounce')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Slow Rolling</button>
+        <button onClick={() => handleBumpChangeSuspension('SharpBumps')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Washboard Road</button>
+        <button onClick={() => handleBumpChangeSuspension('Jump')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Jump</button>
+        <button onClick={togglePauseSuspension} className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700">{isPausedSuspension ? 'Resume' : 'Pause'} Animation</button>
+      </div>
+
+      <h2 className="text-4xl font-bold mt-8 mb-4">At the moment, this is only a simulation, not based on any sort of data! (This feature is coming soon :)</h2>
+      <h1 className="text-4xl font-bold mb-4">How the sensor works:</h1>
+      <p className="text-lg mb-8">
+        The sensor is a device that measures the angle of the suspension arm relative to the body of the vehicle. It sends this data to the microcontroller, which then logs the data.
+      </p>
+
+      {/* Second Sensor Model Section */}
+      <div className="w-full h-96">
+        <Canvas camera={{ position: cameraPosition }}>
+          <ambientLight intensity={0.75} />
+          <directionalLight position={[2, 4, 10]} intensity={1} />
+          <SensorModel currentBumpSensor={currentBumpSensor} isPausedSensor={isPausedSensor} />
+          <OrbitControls enableRotate={false} enableZoom={false} enablePan={false} />
+        </Canvas>
+      </div>
+
+      <div className="flex justify-center mt-4 space-x-4">
+        <button onClick={() => handleBumpChangeSensor('Normal')} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Normal Sensor</button>
+        <button onClick={() => handleBumpChangeSensor('SmallBounce')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Slow Rolling Sensor</button>
+        <button onClick={() => handleBumpChangeSensor('SharpBumps')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Washboard Road Sensor</button>
+        <button onClick={() => handleBumpChangeSensor('Jump')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Jump Sensor</button>
+        <button onClick={togglePauseSensor} className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700">{isPausedSensor ? 'Resume' : 'Pause'} Sensor Animation</button>
+      </div>
+
+      <p className="text-lg">
+        The sensor is a rotary potentiometer, the voltage output of which is proportional to the angle of the suspension arm. The microcontroller reads this voltage and converts it to an angle.
+      </p>
+      
     </div>
   );
 }
