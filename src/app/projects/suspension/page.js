@@ -258,12 +258,23 @@ export default function SuspensionProject() {
         </Canvas>
       </div>
 
-      <div className="flex justify-center mt-4 space-x-4">
-        <button onClick={() => handleBumpChangeSuspension('Normal')} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Normal</button>
-        <button onClick={() => handleBumpChangeSuspension('SmallBounce')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Slow Rolling</button>
-        <button onClick={() => handleBumpChangeSuspension('SharpBumps')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Washboard Road</button>
-        <button onClick={() => handleBumpChangeSuspension('Jump')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Jump</button>
-        <button onClick={togglePauseSuspension} className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700">{isPausedSuspension ? 'Resume' : 'Pause'} Animation</button>
+      {/* Responsive button container for Suspension */}
+      <div className="flex flex-wrap justify-center mt-4 gap-2">
+        <button onClick={() => handleBumpChangeSuspension('Normal')} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">
+          Normal
+        </button>
+        <button onClick={() => handleBumpChangeSuspension('SmallBounce')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
+          Slow Rolling
+        </button>
+        <button onClick={() => handleBumpChangeSuspension('SharpBumps')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
+          Washboard Road
+        </button>
+        <button onClick={() => handleBumpChangeSuspension('Jump')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
+          Jump
+        </button>
+        <button onClick={togglePauseSuspension} className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700">
+          {isPausedSuspension ? 'Resume' : 'Pause'} Animation
+        </button>
       </div>
 
       <h2 className="text-4xl font-bold mt-8 mb-4">At the moment, this is only a simulation, not based on any sort of data! (This feature is coming soon :)</h2>
@@ -282,18 +293,28 @@ export default function SuspensionProject() {
         </Canvas>
       </div>
 
-      <div className="flex justify-center mt-4 space-x-4">
-        <button onClick={() => handleBumpChangeSensor('Normal')} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Normal Sensor</button>
-        <button onClick={() => handleBumpChangeSensor('SmallBounce')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Slow Rolling Sensor</button>
-        <button onClick={() => handleBumpChangeSensor('SharpBumps')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Washboard Road Sensor</button>
-        <button onClick={() => handleBumpChangeSensor('Jump')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Jump Sensor</button>
-        <button onClick={togglePauseSensor} className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700">{isPausedSensor ? 'Resume' : 'Pause'} Sensor Animation</button>
+      {/* Responsive button container for Sensor */}
+      <div className="flex flex-wrap justify-center mt-4 gap-2">
+        <button onClick={() => handleBumpChangeSensor('Normal')} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">
+          Normal Sensor
+        </button>
+        <button onClick={() => handleBumpChangeSensor('SmallBounce')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
+          Slow Rolling Sensor
+        </button>
+        <button onClick={() => handleBumpChangeSensor('SharpBumps')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
+          Washboard Road Sensor
+        </button>
+        <button onClick={() => handleBumpChangeSensor('Jump')} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
+          Jump Sensor
+        </button>
+        <button onClick={togglePauseSensor} className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700">
+          {isPausedSensor ? 'Resume' : 'Pause'} Sensor Animation
+        </button>
       </div>
-
-      <p className="text-lg">
+      
+      <p className="text-lg mb-8">
         The sensor is a rotary potentiometer, the voltage output of which is proportional to the angle of the suspension arm. The microcontroller reads this voltage and converts it to an angle.
       </p>
-      
     </div>
   );
 }
