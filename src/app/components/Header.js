@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="bg-gray-800 p-4 mb-8">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="text-white text-lg font-bold">
           Nathan Wakefield
