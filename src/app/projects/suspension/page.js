@@ -1,3 +1,4 @@
+// src/app/projects/suspension/page.js
 "use client"; // Ensure this is a client component
 
 import React, { useRef, useEffect, useState } from 'react';
