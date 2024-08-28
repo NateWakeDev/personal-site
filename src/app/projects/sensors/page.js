@@ -33,7 +33,7 @@ const SensorsPage = () => {
       {images.map((image, index) => (
         <div key={index} className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">{image.alt}</h2>
-          <img src={image.src} alt={image.alt} className="w-full h-auto mb-2 border-2 border-gray-300 rounded-md" />
+          <img src={image.src} alt={image.alt} className="w-1/2 h-auto mb-2 border-2 border-gray-300 rounded-md" />
           <p className="text-lg">{image.description}</p>
         </div>
       ))}
