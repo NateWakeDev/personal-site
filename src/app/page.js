@@ -5,34 +5,40 @@ import React, { useState, useEffect } from 'react';
 const HomePage = () => {
   // Array of phrases to rotate through
   const phrases = [
+    'CSULB SAE Data Acquisitions Lead',
     'Software Developer',
     'Python & C Specialist',
     'Automation Enthusiast',
     'Data Visualization Specialist',
     '3D Printing Hobbyist',
     'Photography & Videography Enthusiast',
-    'CSULB SAE Data Acquisitions Lead',
   ];
 
   // State to keep track of the current phrase
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [fadeIn, setFadeIn] = useState(true); // New state to control fade-in effect
 
   // Use effect to rotate phrases at intervals
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
+      setFadeIn(false); // Start fading out
+      setTimeout(() => {
+        setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
+        setFadeIn(true); // Fade back in after updating phrase
+      }, 1000); // 1 second for fade-out duration
     }, 3000); // Change phrase every 3 seconds
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, []);
+
 
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-20">
         <h1 className="text-5xl font-bold text-center">Nathan Wakefield</h1>
-        {/* Rotating Text Line */}
-        <p className="text-center mt-4 text-xl">
+        {/* Rotating Text Line with Fade-in Effect */}
+        <p className={`text-center mt-4 text-xl transition-opacity duration-1000 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}>
           {phrases[currentPhraseIndex]}
         </p>
       </div>

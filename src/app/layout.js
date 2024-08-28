@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         <main>{children}</main>
-        <Footer /> {/* Include Footer here */}
+        <Footer /> 
       </body>
     </html>
   );
