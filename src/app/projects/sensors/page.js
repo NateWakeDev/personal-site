@@ -18,7 +18,12 @@ const SensorsPage = () => {
     {
       src: '/images/projects/sensors/mid_child_schematic.png',
       alt: 'Mid Child Schematic',
-      description: 'This schematic details the mid-section ESP32 used for controlling and collecting data from the RPM sensors from the primary input and secondary output CVT shafts',
+      description: 'This schematic details the mid-section ESP32 used for controlling and collecting data from many individual sensors. Such as; all 3 RTD temperature sensors, suspension height sensors for the rear left and right columns, and the rear brake temperature sensor.',
+    },
+    {
+      src: '/images/projects/sensors/rear_child_schematic.png',
+      alt: 'Rear Child Schematic',
+      description: 'This schematic details the rear-section ESP32 used for controlling and collecting data from the input and output of the continuous variable transmission or CVT. This helps monitor the input and output RPMs as well as the belt slippage.',
     },
   ];
 
@@ -37,6 +42,13 @@ const SensorsPage = () => {
           <p className="text-lg">{image.description}</p>
         </div>
       ))}
+      <h1 className="text-4xl font-bold mb-4">ESP32 System Communication</h1>
+      <p className="text-lg mb-8">
+        All sensors communicate with each other using the ESPNOW protocol. This allows for low latency and high-speed communication between the ESP32 modules. The Front, Mid, and Rear ESP32s each receive data from their respective sensors and send it to the Dash ESP32. The Dash ESP32 then sends the data to the SD card. After recording, a computer will be used for processing.
+      </p>
+            <h1 className="text-4xl font-bold mb-4">
+        You can see an example of how this will be post-processed <a href="/projects/suspension" className="text-blue-500 underline">here</a>.
+      </h1>
     </div>
   );
 };
