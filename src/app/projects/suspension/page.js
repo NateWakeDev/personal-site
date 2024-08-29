@@ -5,6 +5,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
+import Loader from '../../components/Loader';
 
 function SuspensionModel({ currentBumpSuspension, isPausedSuspension }) {
   const { scene: sceneSuspension, animations: animationsSuspension } = useGLTF('../models/SAE-Baja-Suspension-Wheel.glb');
@@ -250,7 +251,10 @@ export default function SuspensionProject() {
       <p className="text-lg mb-8">
         This project simulates the suspension system of a Baja car going over different types of bumps. Select a bump type below to start the simulation.
       </p>
+
+      {/* Suspension Model */}
       <div className="w-full h-96">
+        <Loader />
         <Canvas>
           <ambientLight intensity={0.75} />
           <directionalLight position={[0, 2, 10]} intensity={1} />
@@ -284,8 +288,9 @@ export default function SuspensionProject() {
         The sensor is a device that measures the angle of the suspension arm relative to the body of the vehicle. It sends this data to the microcontroller, which then logs the data.
       </p>
 
-      {/* Second Sensor Model Section */}
+      {/* Suspension Sensor Model */}
       <div className="w-full h-96">
+        <Loader />
         <Canvas camera={{ position: cameraPosition }}>
           <ambientLight intensity={0.75} />
           <directionalLight position={[2, 4, 10]} intensity={1} />

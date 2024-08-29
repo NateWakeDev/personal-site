@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Canvas } from '@react-three/fiber';
 import SuspensionPreview from '../components/SuspensionPreview'; // Adjust the path if needed
 import SensorPreview from '../components/SensorPreview';
+import Loader from '../components/Loader';
 
 
 const ProjectsPage = () => {
@@ -20,6 +21,7 @@ const ProjectsPage = () => {
         <Link href="/projects/suspension">
           <div className="border-2 border-gray-300 p-4 rounded-md cursor-pointer hover:border-gray-500">
             <div className="w-full h-48 bg-gray-200">
+              <Loader />
               <Canvas>
                 <ambientLight intensity={0.75} />
                 <directionalLight position={[0, 2, 10]} intensity={1} />
