@@ -31,7 +31,7 @@ body {
 
 .container {
   max-width: 1200px; /* Limit the width to a maximum */
-  padding: 0 1rem; /* Add some padding to prevent content from touching the screen edges */
+  padding: 1rem; /* Add padding for spacing */
   margin: 0 auto; /* Center the container horizontally */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
@@ -39,6 +39,32 @@ body {
 img, canvas {
   max-width: 100%; /* Scale images and canvas to fit their containers */
   height: auto; /* Maintain aspect ratio */
+  display: block; /* Center canvas elements */
+  margin: 0 auto; /* Ensure no extra margins */
+}
+
+.responsive-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 0 auto; /* Centering container */
+  padding: 0 1rem; /* Add padding on smaller screens */
+}
+
+@media (max-width: 640px) {
+  .responsive-container {
+    padding: 0.5rem; /* Adjust padding for smaller screens */
+  }
+}
+
+.text-center {
+  text-align: center; /* Center text alignment */
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
 }
 
 @layer utilities {

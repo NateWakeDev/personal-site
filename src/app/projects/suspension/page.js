@@ -3,7 +3,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import { OrbitControls, useGLTF, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import Loader from '../../components/Loader';
 
@@ -254,11 +254,10 @@ export default function SuspensionProject() {
 
       {/* Suspension Model */}
       <div className="w-full h-96">
-        <Loader />
         <Canvas>
           <ambientLight intensity={0.75} />
           <directionalLight position={[0, 2, 10]} intensity={1} />
-          <SuspensionModel currentBumpSuspension={currentBumpSuspension} isPausedSuspension={isPausedSuspension} />
+            <SuspensionModel currentBumpSuspension={currentBumpSuspension} isPausedSuspension={isPausedSuspension} />
           <OrbitControls enableRotate={false} enableZoom={false} enablePan={false} />
         </Canvas>
       </div>
@@ -290,11 +289,10 @@ export default function SuspensionProject() {
 
       {/* Suspension Sensor Model */}
       <div className="w-full h-96">
-        <Loader />
         <Canvas camera={{ position: cameraPosition }}>
           <ambientLight intensity={0.75} />
           <directionalLight position={[2, 4, 10]} intensity={1} />
-          <SensorModel currentBumpSensor={currentBumpSensor} isPausedSensor={isPausedSensor} />
+            <SensorModel currentBumpSensor={currentBumpSensor} isPausedSensor={isPausedSensor} />
           <OrbitControls enableRotate={false} enableZoom={false} enablePan={false} />
         </Canvas>
       </div>
@@ -318,9 +316,10 @@ export default function SuspensionProject() {
         </button>
       </div>
       
-      <p className="text-lg mb-8">
+      <p className="text-lg mb-8 mt-8">
         The sensor is a rotary potentiometer, the voltage output of which is proportional to the angle of the suspension arm. The microcontroller reads this voltage and converts it to an angle.
       </p>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf8A8gQ1HM_IYrphjnQnhGya0cJHZD7PLU5VMBhvYYRQViF_A/viewform?embedded=true" width="640" height="471" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
   );
 }

@@ -10,6 +10,8 @@
     "deploy": "gh-pages -d out"
   },
   "dependencies": {
+    "@nextui-org/accordion": "^2.0.38",
+    "@nextui-org/react": "^2.4.6",
     "@react-three/drei": "^9.111.3",
     "@react-three/fiber": "^8.17.5",
     "ldrs": "^1.0.2",
