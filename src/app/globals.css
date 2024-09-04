@@ -51,7 +51,7 @@ img, canvas {
   padding: 0 1rem; /* Add padding on smaller screens */
 }
 
-@media (max-width: 640px) {
+@media (max-width: 900px) {
   .responsive-container {
     padding: 0.5rem; /* Adjust padding for smaller screens */
   }
