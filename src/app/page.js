@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {Accordion, AccordionItem} from "@nextui-org/react";
+import './globals.css';
 
 const HomePage = () => {
   // Array of phrases to rotate through
@@ -36,7 +37,7 @@ const HomePage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-20">
+      <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-20 mb-8">
         <h1 className="text-5xl font-bold text-center">Nathan Wakefield</h1>
         {/* Rotating Text Line with Fade-in Effect */}
         <p className={`text-center mt-4 text-xl transition-opacity duration-1000 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}>
@@ -45,7 +46,7 @@ const HomePage = () => {
       </div>
 
       
-      <Accordion variant="shadow">
+      <Accordion variant="bordered" className="accordion-border">
         {/* Introduction */}
         <AccordionItem key="1" aria-label="Introduction" title="Introduction">
         <div className="mb-8">

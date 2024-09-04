@@ -94,3 +94,9 @@ img, canvas {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+.accordion-border {
+  border: 1px solid #ffffff; /* Example border color */
+  border-radius: 4px; /* Optional: Rounded corners */
+  padding: 10px; /* Optional: Padding inside the border */
+}

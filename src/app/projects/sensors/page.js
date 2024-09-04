@@ -1,6 +1,10 @@
 // src/app/projects/sensors/page.js
+"use client"; // Ensure this is a client component
 
 import React from 'react';
+import {Accordion, AccordionItem} from "@nextui-org/accordion";
+import '../../globals.css';
+
 
 const SensorsPage = () => {
   // Array of image objects with their source, alt text, and description
@@ -53,6 +57,25 @@ const SensorsPage = () => {
     },
   ];
 
+  const gps = 
+    "This sensor will be used to determine the speed and location of the vehicle. This will be helpful in determining lap times, as well as mapping the vehicle on a virtual track. This also collects an accurate timestamp for the recording of each of the sensor readings.";
+
+  const accelerometer =
+    "This sensor will be used to determine the acceleration of the vehicle, as well as multi-axis rotation readings. This will be helpful in determining the G-forces that the driver is experiencing and will be helpful in tuning the suspension. This will also serve as redundancy in case something happens to the suspension potentiometers.";
+
+  const suspensionHeightSensors =
+    "These sensors will be used to determine the suspension travel of the vehicle. We can use the collected data to tune the suspension and make sure it is not too soft or too hard.";
+
+  const brakeTemperatureSensors =
+    "These sensors will be used to determine the temperature of the brakes. The rotors were designed in-house but manufactured elsewhere, so we need to see that the rotors are dissipating heat properly.";
+
+  const rtdTemperatureSensors =
+    "These sensors will be used to determine the temperature of all of the different oils in the vehicle. Managing heat dissipation is very important in endurance racing.";
+
+  const rpmSensors =
+    "These sensors will be used to determine the RPM of the CVT input and output shafts. This will be helpful in determining the belt slip and will help in tuning the CVT later on.";
+
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-4">Baja SAE ESP32 Systems</h1>
@@ -68,34 +91,35 @@ const SensorsPage = () => {
       Keep in mind: Components that have 5v inputs and outputs are connected to a logic level converter to convert the signals from 5v to 3v as the ESP32 can only handle 3v for the input signals.
       </p>
       <h2 className="text-3xl font-semibold mb-4">Sensor Overview:</h2>
-      <ul className="list-disc pl-5 mb-4">
-        <li className="text-lg">GPS</li>
-          <ul className="list-disc pl-5 mb-4">
-            <li className="text-lg">This sensor will be used to determine the speed of the vehicle and the location of the vehicle. This will be helpful in determining the lap times, mapping the vehicle on the track. This also collects an accurate timestamp for the recording of each of the sensor readings.</li>
-          </ul>
-        <li className="text-lg">Accelerometer</li>
-          <ul className="list-disc pl-5 mb-4">
-            <li className="text-lg">This sensor will be used to determine the acceleration of the vehicle, as well as multi-axis rotation readings. This will be helpful in determining the G-forces that the driver is experiencing and will be helpful in tuning the suspension. This will also serve as redundancy in case something happens to the suspension potentiometers.</li>
-          </ul>
-        <li className="text-lg">Front and Rear Suspension Height Sensors</li>
-          <ul className="list-disc pl-5 mb-4">
-            <li className="text-lg">These sensors will be used to determine the suspension travel of the vehicle. We can use the collected data to tune the suspension and make sure it is not too soft or to hard.</li>
-          </ul>
-        <li className="text-lg">Front and Rear Brake Temperature Sensors</li>
-          <ul className="list-disc pl-5 mb-4">
-            <li className="text-lg">These sensors will be used to determine the temperature of the brakes. The rotors were designed in-house but manufactured elsewhere, so we need to see that the rotors are dissapating heat properly.</li>
-          </ul>
-        <li className="text-lg">RTD Temperature Sensors</li>
-          <ul className="list-disc pl-5 mb-4">
-            <li className="text-lg">These sensors will be used to determine the temperature of all of the different oils in the vehicle. Managing heat dissapation is very important in endurance racing.</li>
-          </ul>
-        <li className="text-lg">CVT Input and Output RPM Sensors</li>
-          <ul className="list-disc pl-5 mb-4">
-            <li className="text-lg">These sensors will be used to determine the RPM of the CVT input and output shafts. This will be helpful in determining the belt slip and will help in tuning the CVT later on.</li>
-          </ul>
-      </ul>
+      
+      <Accordion variant="bordered" className="accordion-border">
+        {/* Sensor Overview */}
+        <AccordionItem key="1" aria-label="GPS" title="GPS">
+          {gps}
+        </AccordionItem>
 
-      <h2 className="text-3xl font-semibold mb-4">System Overview:</h2>
+        <AccordionItem key="2" aria-label="Accelerometer" title="Accelerometer">
+          {accelerometer}
+        </AccordionItem>
+
+        <AccordionItem key="3" aria-label="Suspension Height Sensors" title="Suspension Height Sensors">
+          {suspensionHeightSensors}
+        </AccordionItem>
+
+        <AccordionItem key="4" aria-label="Brake Temperature Sensors" title="Brake Temperature Sensors">
+          {brakeTemperatureSensors}
+        </AccordionItem>
+
+        <AccordionItem key="5" aria-label="RTD Temperature Sensors" title="RTD Temperature Sensors">
+          {rtdTemperatureSensors}
+        </AccordionItem>
+
+        <AccordionItem key="6" aria-label="RPM Sensors" title="RPM Sensors">
+          {rpmSensors}
+        </AccordionItem>
+      </Accordion>
+
+      <h2 className="text-3xl font-semibold mt-8 mb-4">Schematics Overview:</h2>
 
       {/* Map over the images array to display each image with its heading, description, and list */}
       {images.map((image, index) => (
