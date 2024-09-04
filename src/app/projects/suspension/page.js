@@ -107,7 +107,7 @@ function SuspensionModel({ currentBumpSuspension, isPausedSuspension }) {
   });
 
   if (sceneSuspension) {
-    sceneSuspension.position.set(0, -5, 0);
+    sceneSuspension.position.set(-5, -5, 0);
     sceneSuspension.scale.set(3, 3, 3); // Modify scale here if needed
   }
 
