@@ -56,15 +56,16 @@ const SensorsPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-4">Baja SAE ESP32 Systems</h1>
+      
+      <h2 className="text-3xl font-semibold mb-4">Project Statement:</h2>
+      <p className="text-lg mb-4">
+        The goal of this project is to design a system that can collect data from various sensors on the Baja SAE vehicle. 
+      </p>
       <p className="text-lg mb-8">
         Below are schematics showcasing the design and layout of different ESP32 systems involved in the project.
       </p>
       <p className="text-lg mb-8">
       Keep in mind: Components that have 5v inputs and outputs are connected to a logic level converter to convert the signals from 5v to 3v as the ESP32 can only handle 3v for the input signals.
-      </p>
-      <h2 className="text-3xl font-semibold mb-4">Project Statement:</h2>
-      <p className="text-lg mb-4">
-        The goal of this project is to design a system that can collect data from various sensors on the Baja SAE vehicle. 
       </p>
       <h2 className="text-3xl font-semibold mb-4">Sensor Overview:</h2>
       <ul className="list-disc pl-5 mb-4">
