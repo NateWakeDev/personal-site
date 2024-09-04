@@ -58,23 +58,25 @@ const SensorsPage = () => {
   ];
 
   const gps = 
-    "This sensor will be used to determine the speed and location of the vehicle. This will be helpful in determining lap times, as well as mapping the vehicle on a virtual track. This also collects an accurate timestamp for the recording of each of the sensor readings.";
+    "This sensor will be used to determine the speed and location of the vehicle. By connecting to a GPS satellite this enables the module to collect longitude and latitude, as well as an accurate time stamp for recording sensor information. This will be helpful in determining lap times, as well as mapping the vehicle on a virtual track. \nSensor Used: Adafruit Ultimate GPS Breakout";
 
   const accelerometer =
-    "This sensor will be used to determine the acceleration of the vehicle, as well as multi-axis rotation readings. This will be helpful in determining the G-forces that the driver is experiencing and will be helpful in tuning the suspension. This will also serve as redundancy in case something happens to the suspension potentiometers.";
+    "This sensor will be used to determine the acceleration of the vehicle, as well as multi-axis rotation readings. This will be helpful in determining the G-forces that the driver is experiencing and will be helpful in tuning the suspension. This will also serve as redundancy in case something happens to the suspension potentiometers.\nSensor Used: MPU-6050.";
 
   const suspensionHeightSensors =
-    "These sensors will be used to determine the suspension travel of the vehicle. We can use the collected data to tune the suspension and make sure it is not too soft or too hard.";
+    "These sensors will be used to determine the suspension travel of the vehicle. We can use the collected data to tune the suspension and make sure it is not too soft or too hard.\nSensors Used: AA-ROT-120 Air Ride Suspension Height Sensor (x2) for the front, modified Ford Expedition Ride Height Sensor (x2) for the rear.";
 
   const brakeTemperatureSensors =
-    "These sensors will be used to determine the temperature of the brakes. The rotors were designed in-house but manufactured elsewhere, so we need to see that the rotors are dissipating heat properly.";
+    "These sensors will be used to determine the temperature of the brakes. The rotors were designed in-house but manufactured elsewhere, so we need to see that the rotors are dissipating heat properly.\nSensors Used: D6T optical Temperature Sensor (x3).";
 
   const rtdTemperatureSensors =
-    "These sensors will be used to determine the temperature of all of the different oils in the vehicle. Managing heat dissipation is very important in endurance racing.";
+    "These sensors will be used to determine the temperature of all of the different oils in the vehicle. Managing heat dissipation is very important in endurance racing.\nSensors Used: RTD Pt100 (x3), coupled with the Adafruit RTD Pt100 Amplifier (x3).";
 
   const rpmSensors =
-    "These sensors will be used to determine the RPM of the CVT input and output shafts. This will be helpful in determining the belt slip and will help in tuning the CVT later on.";
+    "These sensors will be used to determine the RPM of the CVT input and output shafts. This will be helpful in determining the belt slip and will help in tuning the CVT later on.\nSensors Used: Magnetic Hall-Effect Sensor (x2).";
 
+  const logicConverter =
+    "This component is used to convert the 5v signals from the sensors to 3v signals that the ESP32 can handle. This is necessary as the ESP32 can only handle 3v for the input signals.\nComponent Used: HiLetgo IIC/I2C Logic Level Converter.";
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -90,9 +92,10 @@ const SensorsPage = () => {
       <p className="text-lg mb-8">
       Keep in mind: Components that have 5v inputs and outputs are connected to a logic level converter to convert the signals from 5v to 3v as the ESP32 can only handle 3v for the input signals.
       </p>
+
+    {/* Sensor Overview */}
       <h2 className="text-3xl font-semibold mb-4">Sensor Overview:</h2>
-      
-      <Accordion variant="bordered" className="accordion-border">
+      <Accordion variant="bordered" selectionMode="multiple" className="accordion-border">
         {/* Sensor Overview */}
         <AccordionItem key="1" aria-label="GPS" title="GPS">
           {gps}
@@ -117,8 +120,12 @@ const SensorsPage = () => {
         <AccordionItem key="6" aria-label="RPM Sensors" title="RPM Sensors">
           {rpmSensors}
         </AccordionItem>
+        <AccordionItem key="7" aria-label="Logic Converter" title="Logic Converter">
+          {logicConverter}
+        </AccordionItem>
       </Accordion>
 
+    {/* Schematics */}
       <h2 className="text-3xl font-semibold mt-8 mb-4">Schematics Overview:</h2>
 
       {/* Map over the images array to display each image with its heading, description, and list */}
@@ -150,6 +157,7 @@ const SensorsPage = () => {
         </div>
       ))}
 
+    {/* System Communication */}
       <h1 className="text-4xl font-bold mb-4">ESP32 System Communication</h1>
       <p className="text-lg mb-8">
         All sensors communicate with each other using the ESPNOW protocol. This allows for low latency and high-speed communication between the ESP32 modules. As stated earlier: the Front, Mid, and Rear ESP32s each receive data from their respective sensors and send it to the Dash ESP32. The Dash ESP32 then sends the data to the SD card. After recording, a computer will be used for post-processing.
