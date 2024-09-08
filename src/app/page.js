@@ -31,7 +31,7 @@ const HomePage = () => {
     }, 3000); // Change phrase every 3 seconds
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
-  }, []);
+  });
 
 
   return (

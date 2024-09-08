@@ -10,7 +10,7 @@ const ResumePage = () => {
       <section className="mt-8">
         <a 
           href="/Nathan_Wakefield_Resume.pdf" 
-          className="text-blue-500 underline" 
+          className="text-3xl text-blue-500 underline" 
           download
         >
           Download My Resume (PDF)

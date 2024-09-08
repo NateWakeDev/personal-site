@@ -41,7 +41,7 @@ body {
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-img, canvas {
+Image, canvas {
   max-width: 100%; /* Scale images and canvas to fit their containers */
   height: auto; /* Maintain aspect ratio */
   display: block; /* Center canvas elements */

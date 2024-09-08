@@ -4,6 +4,7 @@
 import React from 'react';
 import {Accordion, AccordionItem} from "@nextui-org/accordion";
 import '../../globals.css';
+import Image from 'next/image';
 
 
 const SensorsPage = () => {
@@ -132,7 +133,7 @@ const SensorsPage = () => {
       {images.map((image, index) => (
         <div key={index} className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">{image.alt}</h2>
-          <img 
+          <Image 
             src={image.src} 
             alt={image.alt} 
             className="w-full sm:w-3/4 md:w-1/2 h-auto mb-4 border-2 border-gray-300 rounded-md"
