@@ -29,6 +29,11 @@ body {
   padding: 0;
 }
 
+.section {
+  width: 100%;
+  min-height: 75vh;
+}
+
 .container {
   max-width: 1200px; /* Limit the width to a maximum */
   padding: 1rem; /* Add padding for spacing */

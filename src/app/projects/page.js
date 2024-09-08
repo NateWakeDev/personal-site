@@ -7,6 +7,7 @@ import { Canvas } from '@react-three/fiber';
 import SuspensionPreview from '../components/SuspensionPreview'; // Adjust the path if needed
 import SensorPreview from '../components/SensorPreview';
 import Loader from '../components/Loader';
+import { Divider } from '@nextui-org/react';
 
 
 const ProjectsPage = () => {
@@ -16,6 +17,7 @@ const ProjectsPage = () => {
       <p className="text-lg mb-8">
         Here are some of the projects I&apos;ve worked on. Click on a project to learn more.
       </p>
+      <Divider className="my-4" />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {/* Suspension Model Preview */}
         <Link href="/projects/suspension">

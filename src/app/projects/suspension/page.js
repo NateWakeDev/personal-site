@@ -6,6 +6,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import Loader from '../../components/Loader';
+import { Divider } from '@nextui-org/react';
 
 function SuspensionModel({ currentBumpSuspension, isPausedSuspension }) {
   const { scene: sceneSuspension, animations: animationsSuspension } = useGLTF('../models/SAE-Baja-Suspension-Wheel.glb');
@@ -251,9 +252,12 @@ export default function SuspensionProject() {
       <p className="text-lg mb-8">
         This project simulates the suspension system of a Baja car going over different types of bumps. Select a bump type below to start the simulation.
       </p>
+      <Divider className="my-4" />
+      <p className="text-4xl font-bold mt-8 mb-4">At the moment, this is only a simulation, not based on any sort of data! (This feature is coming soon :)</p>
 
       {/* Suspension Model */}
       <div className="w-full h-96">
+        <h2 className="text-2xl font-bold mb-4">Suspension Simulation</h2>
         <Canvas>
           <ambientLight intensity={0.75} />
           <directionalLight position={[0, 2, 10]} intensity={1} />
@@ -281,7 +285,7 @@ export default function SuspensionProject() {
         </button>
       </div>
 
-      <h2 className="text-4xl font-bold mt-8 mb-4">At the moment, this is only a simulation, not based on any sort of data! (This feature is coming soon :)</h2>
+      
       <h1 className="text-4xl font-bold mb-4">How the sensor works:</h1>
       <p className="text-lg mb-8">
         The sensor is a device that measures the angle of the suspension arm relative to the body of the vehicle. It sends this data to the microcontroller, which then logs the data.
@@ -319,7 +323,6 @@ export default function SuspensionProject() {
       <p className="text-lg mb-8 mt-8">
         The sensor is a rotary potentiometer, the voltage output of which is proportional to the angle of the suspension arm. The microcontroller reads this voltage and converts it to an angle.
       </p>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf8A8gQ1HM_IYrphjnQnhGya0cJHZD7PLU5VMBhvYYRQViF_A/viewform?embedded=true" width="640" height="471" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
   );
 }

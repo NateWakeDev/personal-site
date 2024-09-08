@@ -12,30 +12,17 @@ const Header = () => {
           <span>Nathan Wakefield</span>
         </Link>
         <div>
-          <Dropdown>
-            <DropdownTrigger>
-              <Button variant="bordered" className="accordion-border items-center">
-                Open Menu
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Static Actions">
-              <DropdownItem key="About" className="accordion-border">
-                <Link href="/about" className="text-white items-center">
-                  About
-                </Link>
-              </DropdownItem>
-              <DropdownItem key="Projects" className="accordion-border">
-                <Link href="/projects" className="text-white items-center">
-                  Projects
-                </Link>
-              </DropdownItem>
-              <DropdownItem key="Contact" className="accordion-border items-center">
-                <Link href="/contact" className="text-white items-center">
-                  Contact
-                </Link>
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+        
+          <Link href="/Resume" className="text-white mr-4">
+            Resume
+          </Link>
+          <Link href="/projects" className="text-white mr-4">
+            Projects
+          </Link>
+          <Link href="/contact" className="text-white">
+            Contact
+          </Link>
+        
         </div>
       </div>
     </nav>
