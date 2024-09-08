@@ -13,7 +13,7 @@ const Header = () => {
         </Link>
         <div>
         
-          <Link href="/Resume" className="text-white mr-4">
+          <Link href="/resume" className="text-white mr-4">
             Resume
           </Link>
           <Link href="/projects" className="text-white mr-4">
