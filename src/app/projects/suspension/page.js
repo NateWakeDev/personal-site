@@ -266,8 +266,8 @@ export default function SuspensionProject() {
   {/* Slider for Suspension */}
   <input
     type="range"
-    min="0"
-    max="100"
+    min="1"
+    max="99"
     value={sliderValueSuspension}
     onChange={handleSliderChangeSuspension} // Here is where it's used
     className="w-full md:w-1/2"
@@ -276,8 +276,8 @@ export default function SuspensionProject() {
   {/* Slider for Sensor */}
   <input
     type="range"
-    min="0"
-    max="100"
+    min="1"
+    max="99"
     value={sliderValueSensor}
     onChange={handleSliderChangeSensor} // Here is where it's used
     className="w-full md:w-1/2"
@@ -286,11 +286,14 @@ export default function SuspensionProject() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-4">Suspension Simulation with Three.js</h1>
-      <p className="text-lg mb-8">
-        This project simulates the suspension system of a Baja car going over different types of bumps. Select a bump type below to start the simulation.
-      </p>
-      <Divider className="my-4" />
-      <p className="text-3xl font-bold mt-8 mb-8">At the moment, this is only a simulation, not based on any sort of data! (This feature is coming soon :)</p>
+      
+      <p className="text-lg"> This project simulates the suspension system of the SAE Baja vehicle I designed the embedded electronics for. </p>
+      <p className="text-lg"> There are multiple types of terrain bumps based on what we encountered in our last competition. </p>
+      <p className="text-lg mb-4"> In the future, this simulation will be based entirely on the data gathered from that event. </p>
+
+      <p className="text-lg"> At the moment this is only a simulation, not based on any sort of data! ( This feature is coming soon 🙂 ). </p>
+      <p className="text-lg"> I cannot model the data after our last race, as a result of a physical malfunction ( unrelated to the sensor system ).</p>
+      <p className="text-lg mb-8"> In the future, I will be able to model our race data provided there are no malfunctions. </p>
       
       <Divider className="my-4" />
 
@@ -375,7 +378,7 @@ export default function SuspensionProject() {
           <Slider
             label="Suspension Control"
             step={1} // Adjust for precision
-            maxValue={90} // Set the max value you need
+            maxValue={99} // Set the max value you need
             minValue={1} // Set the min value you need
             hideValue={true}
             value={sliderValueSuspension} // Bind slider to value state
@@ -473,7 +476,7 @@ export default function SuspensionProject() {
           <Slider
             label="Control Sensor"
             step={1} // Adjust this to match the desired precision
-            maxValue={90} // Set the max value you need
+            maxValue={99} // Set the max value you need
             minValue={1} // Set the min value you need
             hideValue={true}
             value={sliderValueSensor} // Bind slider to value state
