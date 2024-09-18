@@ -19,6 +19,17 @@ const ProjectsPage = () => {
       </p>
       <Divider className="my-4" />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+        {/* ESP32 System Preview */}
+        <Link href="/projects/sensors">
+          <div className="border-2 border-gray-300 p-4 rounded-md cursor-pointer hover:border-gray-500">
+            <div className="w-full h-48 bg-gray-200">
+              <SensorPreview /> {/* Using the SensorPreview component */}
+            </div>
+            <h3 className="mt-4 text-xl font-semibold">ESP32 System Schematics</h3>
+          </div>
+        </Link>
+
         {/* Suspension Model Preview */}
         <Link href="/projects/suspension">
           <div className="border-2 border-gray-300 p-4 rounded-md cursor-pointer hover:border-gray-500">
@@ -33,18 +44,9 @@ const ProjectsPage = () => {
             <h3 className="mt-4 text-xl font-semibold">Suspension Simulation with Three.js</h3>
           </div>
         </Link>
-        
-        {/* Sensor Model Preview */}
-        <Link href="/projects/sensors">
-          <div className="border-2 border-gray-300 p-4 rounded-md cursor-pointer hover:border-gray-500">
-            <div className="w-full h-48 bg-gray-200">
-              <SensorPreview /> {/* Using the SensorPreview component */}
-            </div>
-            <h3 className="mt-4 text-xl font-semibold">ESP32 System Schematics</h3>
-          </div>
-        </Link>
-        
+
         {/* Add more project preview boxes here */}
+
       </div>
     </div>
   );
