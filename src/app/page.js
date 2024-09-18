@@ -16,6 +16,18 @@ const HomePage = () => {
     'Photography & Videography Enthusiast',
   ];
 
+  const skills = [
+    "Python",
+    "C",
+    "JavaScript",
+    "Automation",
+    "Data Visualization",
+    "Software Design",
+    "Debugging",
+    "Git",
+    "NumPy, Pandas, Matplotlib"
+  ];
+
   // State to keep track of the current phrase
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true); // New state to control fade-in effect
@@ -32,7 +44,6 @@ const HomePage = () => {
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
   });
-
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -55,23 +66,63 @@ const HomePage = () => {
 
       <Divider className="my-4" />
 
+      {/* Current Position */}
+      <div className="mt-8 mb-8">
+        <h2 className="text-2xl font-bold mb-4">Current Position</h2>
+        <p className="text-lg">
+          Currently, I am <strong>Lead of Data Acquisitions</strong> for the <strong>CSULB SAE team</strong>. I am responsible for managing and creating the system used to collect data on different aspects of the car. This includes the design of the system, the programming of the system, and the data analysis of the system.
+        </p>
+      </div>
+      
+      <Divider className="my-4" />
+
       {/* Skills Section */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Skills</h2>
-          <ul className="list-disc pl-5">
-            <li>Python</li>
-            <li>C</li>
-            <li>JavaScript</li>
-            <li>Automation</li>
-            <li>Data Visualization</li>
-            <li>Software Design</li>
-            <li>Debugging</li>
-            <li>Git</li>
-            <li>NumPy, Pandas, Matplotlib</li>
-          </ul>
+        <div className="flex flex-wrap gap-4">
+          {skills.map((skill, index) => (
+            <div key={index} className="flex items-center justify-center bg-gray-800 p-2 rounded">
+              {skill}
+            </div>
+          ))}
         </div>
+      </div>
 
-        <Divider className="my-4" />
+      <Divider className="my-4" />
+
+      {/* Project Experience Section */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-4">Project Experience</h2>
+        <div className="mb-4">
+              <h3 className="text-xl font-bold">CSULB SAE Data Acquisitions Lead</h3>
+              <ul className="list-disc pl-5">
+                <li>Managed GitHub projects for CAD, programming, and datasheets.</li>
+                <li>Refactored programs for Arduinos and ESP32s.</li>
+                <li>Spearheaded the design of a new embedded system, using GPS, G&#45;force, suspension ride height, and temperature sensors.</li>
+                <li>Designed and 3D printed housings for data components.</li>
+              </ul>
+              <h3 className="text-xl font-bold">
+                You can see these projects located: <a href="/projects" className="text-blue-500 underline">here</a>!
+              </h3>
+            </div>
+          <div className="mb-4">
+            <h3 className="text-xl font-bold">Customer Review Request Automation</h3>
+            <ul className="list-disc pl-5">
+              <li>Automated data entry tasks, saving 4+ hours weekly using Python and Selenium.</li>
+              <li>Utilized NumPy for CSV manipulation and data preprocessing.</li>
+            </ul>
+            </div>
+          <div className="mb-8">
+            <h3 className="text-xl font-bold">Photography and Videography Library Backup</h3>
+            <ul className="list-disc pl-5">
+              <li>Automated renaming and organization of over 2TB of multimedia files.</li>
+              <li>Implemented duplicate detection using average per-pixel RGB values.</li>
+            </ul>
+            </div>
+          </div>
+
+      <Divider className="my-4" />
+
       {/* Education Section */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Education</h2>
@@ -107,35 +158,9 @@ const HomePage = () => {
           </div>
         </div>
 
-        <Divider className="my-4" />
+        
 
-      {/* Project Experience Section */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Project Experience</h2>
-        <div className="mb-4">
-              <h3 className="text-xl font-bold">CSULB SAE Data Acquisitions Lead</h3>
-              <ul className="list-disc pl-5">
-                <li>Managed GitHub projects for CAD, programming, and datasheets.</li>
-                <li>Refactored programs for Arduinos and ESP32s.</li>
-                <li>Spearheaded the design of a new embedded system, using GPS, G&#45;force, suspension ride height, and temperature sensors.</li>
-                <li>Designed and 3D printed housings for data components.</li>
-              </ul>
-            </div>
-          <div className="mb-4">
-            <h3 className="text-xl font-bold">Customer Review Request Automation</h3>
-            <ul className="list-disc pl-5">
-              <li>Automated data entry tasks, saving 4+ hours weekly using Python and Selenium.</li>
-              <li>Utilized NumPy for CSV manipulation and data preprocessing.</li>
-            </ul>
-            </div>
-          <div className="mb-8">
-            <h3 className="text-xl font-bold">Photography and Videography Library Backup</h3>
-            <ul className="list-disc pl-5">
-              <li>Automated renaming and organization of over 2TB of multimedia files.</li>
-              <li>Implemented duplicate detection using average per-pixel RGB values.</li>
-            </ul>
-            </div>
-          </div>
+      
     </div>
   );
 };

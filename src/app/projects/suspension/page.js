@@ -286,6 +286,8 @@ export default function SuspensionProject() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-4">Suspension Simulation with Three.js</h1>
+
+      <h2 className="text-4xl font-bold mb-4">Project Overview:</h2>
       
       <p className="text-lg"> This project simulates the suspension system of the SAE Baja vehicle I designed the embedded electronics for. </p>
       <p className="text-lg"> There are multiple types of terrain bumps based on what we encountered in our last competition. </p>

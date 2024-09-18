@@ -14,7 +14,7 @@ const ProjectsPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-4">My Projects</h1>
-      <p className="text-lg mb-8">
+      <p className="text-lg mb-4">
         Here are some of the projects I&apos;ve worked on. Click on a project to learn more.
       </p>
       <Divider className="my-4" />

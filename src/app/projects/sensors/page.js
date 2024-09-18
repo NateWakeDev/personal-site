@@ -2,7 +2,7 @@
 "use client"; // Ensure this is a client component
 
 import React from 'react';
-import {Accordion, AccordionItem} from "@nextui-org/accordion";
+import { Divider, Accordion, AccordionItem } from "@nextui-org/react";
 import '../../globals.css';
 import Image from 'next/image';
 
@@ -94,6 +94,8 @@ const SensorsPage = () => {
       Keep in mind: Components that have 5v inputs and outputs are connected to a logic level converter to convert the signals from 5v to 3v as the ESP32 can only handle 3v for the input signals.
       </p>
 
+      <Divider className="my-4" />
+
     {/* Sensor Overview */}
       <h2 className="text-3xl font-semibold mb-4">Sensor Overview:</h2>
       <Accordion variant="bordered" selectionMode="multiple" className="accordion-border">
@@ -125,6 +127,8 @@ const SensorsPage = () => {
           {logicConverter}
         </AccordionItem>
       </Accordion>
+
+      <Divider className="my-4" />
 
     {/* Schematics */}
       <h2 className="text-3xl font-semibold mt-8 mb-4">Schematics Overview:</h2>
@@ -158,6 +162,8 @@ const SensorsPage = () => {
         </div>
       ))}
 
+    <Divider className="my-4" />
+
     {/* System Communication */}
       <h1 className="text-4xl font-bold mb-4">ESP32 System Communication</h1>
       <p className="text-lg mb-8">
@@ -166,6 +172,14 @@ const SensorsPage = () => {
       <h1 className="text-4xl font-bold mb-4">
         You can see an example of how this will be post-processed <a href="/projects/suspension" className="text-blue-500 underline">here</a>.
       </h1>
+
+      <Divider className="my-4" />
+
+    {/* Up Next */}
+      <h1 className="text-4xl font-bold mb-4">Up Next...</h1>
+        <p className="text-lg mb-8">
+          Now that the ESP32 systems are designed and the sensors are chosen and wired correctly, the next step is to verify the system is working as intended. We will be doing this by having a Raspberry Pi computer receive the data from the Parent ESP32 via a LoRa module. This will allow us to see the data in real-time and verify that the data is being collected, sent and received correctly. This will also allow us to record the data in a different location for redundancy. Project updates will be posted as we progress.
+        </p>
     </div>
   );
 };
