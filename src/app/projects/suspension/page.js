@@ -5,8 +5,9 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Html } from '@react-three/drei';
 import * as THREE from 'three';
-import Loader from '../../components/Loader';
-import { Divider, Switch, Slider } from '@nextui-org/react';
+import { Divider } from '@nextui-org/divider';
+import { Switch } from '@nextui-org/switch';
+import { Slider } from '@nextui-org/slider';
 
 function SuspensionModel({ currentBumpSuspension, isPausedSuspension, sliderValueSuspension, useSliderSuspension }) {
   const { scene: sceneSuspension, animations: animationsSuspension } = useGLTF('../models/SAE-Baja-Suspension-Wheel.glb');

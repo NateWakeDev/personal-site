@@ -1,7 +1,8 @@
 "use client"; // Ensure this is a client component
 
 import React, { useState, useEffect } from 'react';
-import { Divider } from "@nextui-org/react";
+import { Divider } from "@nextui-org/divider";
+import { Code } from '@nextui-org/code';
 import './globals.css';
 
 const HomePage = () => {
@@ -60,7 +61,7 @@ const HomePage = () => {
       <div className="mt-8 mb-8">
         <h2 className="text-2xl font-bold mb-4">About Me</h2>
         <p className="text-lg">
-          Hello! My name is Nate and I am a software developer with a passion for all sorts of tinkering. Currently I am currently focused in embedded programming, but have experience with web development, automation, application development, as well as UI/UX. 
+          Hello! My name is <Code color="primary" size="lg">Nate</Code> and I am a <Code color="primary" size="lg">Software Developer</Code>. Currently I am currently focused in embedded programming, but have experience with web development, automation, application development, as well as UI/UX. 
         </p>
       </div>
 

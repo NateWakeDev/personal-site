@@ -7,7 +7,7 @@ import { Canvas } from '@react-three/fiber';
 import SuspensionPreview from '../components/SuspensionPreview'; // Adjust the path if needed
 import SensorPreview from '../components/SensorPreview';
 import Loader from '../components/Loader';
-import { Divider } from '@nextui-org/react';
+import { Divider } from '@nextui-org/divider';
 
 
 const ProjectsPage = () => {

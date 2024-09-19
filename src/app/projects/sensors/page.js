@@ -2,7 +2,8 @@
 "use client"; // Ensure this is a client component
 
 import React from 'react';
-import { Divider, Accordion, AccordionItem } from "@nextui-org/react";
+import { Divider } from '@nextui-org/divider';
+import { Accordion, AccordionItem } from '@nextui-org/accordion';
 import '../../globals.css';
 import Image from 'next/image';
 
