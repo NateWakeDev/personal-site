@@ -71,7 +71,7 @@ const HomePage = () => {
       <div className="mt-8 mb-8">
         <h2 className="text-2xl font-bold mb-4">Current Position</h2>
         <p className="text-lg">
-          Currently, I am <strong>Lead of Data Acquisitions</strong> for the <strong>CSULB SAE team</strong>. I am responsible for managing and creating the system used to collect data on different aspects of the car. This includes the design of the system, the programming of the system, and the data analysis of the system.
+          Currently, I am <Code color="primary" size="lg">Lead of Data Acquisitions</Code> for the <Code color="primary" size="lg">CSULB SAE team</Code>. I am responsible for managing and creating the system used to collect data on different aspects of the car. This includes the design of the system, the programming of the system, and the data analysis of the system.
         </p>
       </div>
       
