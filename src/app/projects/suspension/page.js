@@ -8,6 +8,7 @@ import * as THREE from 'three';
 import { Divider } from '@nextui-org/divider';
 import { Switch } from '@nextui-org/switch';
 import { Slider } from '@nextui-org/slider';
+import { Tooltip } from '@nextui-org/react';
 
 function SuspensionModel({ currentBumpSuspension, isPausedSuspension, sliderValueSuspension, useSliderSuspension }) {
   const { scene: sceneSuspension, animations: animationsSuspension } = useGLTF('../models/SAE-Baja-Suspension-Wheel.glb');
@@ -318,23 +319,24 @@ export default function SuspensionProject() {
 
       {/* Switch to toggle between buttons and slider for suspension */}
       <div className="flex flex-col items-center justify-center my-4 gap-2">
-        <Switch
-          className="text-white"
-          isSelected={useSliderSuspension} // Use the state for toggle
-          onValueChange={(value) => {
-            setUseSliderSuspension(value); // Handle the state change
-            // Restart the suspension animation
-            if (actionSuspension.current) {
-              actionSuspension.current.stop(); // Stop the current animation
-              actionSuspension.current.reset(); // Reset the animation
-              actionSuspension.current.play(); // Play the animation from the start
-            }
-          }}
-          color="primary"
-          size="md"
-        >
-          Suspension Control
-        </Switch>
+        <Tooltip content="Click to switch between buttons or a slider">
+          <Switch
+            className="text-white"
+            isSelected={useSliderSuspension} // Use the state for toggle
+            onValueChange={(value) => {
+              setUseSliderSuspension(value); // Handle the state change
+              // Restart the suspension animation
+              if (actionSuspension.current) {
+                actionSuspension.current.stop(); // Stop the current animation
+                actionSuspension.current.reset(); // Reset the animation
+                actionSuspension.current.play(); // Play the animation from the start
+              }
+            }}
+            color="primary"
+            size="lg"
+          >
+          </Switch>
+        </Tooltip>
         <p className="text-small text-default-500">
           Selected: {useSliderSuspension ? "Slider" : "Buttons"}
         </p>
@@ -416,23 +418,24 @@ export default function SuspensionProject() {
 
       {/* Switch to toggle between buttons and slider for sensor */}
       <div className="flex flex-col items-center justify-center my-4 gap-2">
-        <Switch
-          className="text-white"
-          isSelected={useSliderSensor} // Use the state for toggle
-          onValueChange={(value) => {
-            setUseSliderSensor(value); // Handle the state change
-            // Restart the sensor animation
-            if (actionSensor.current) {
-              actionSensor.current.stop(); // Stop the current animation
-              actionSensor.current.reset(); // Reset the animation
-              actionSensor.current.play(); // Play the animation from the start
-            }
-          }}
-          color="primary"
-          size="md"
-        >
-          Sensor Control
-        </Switch>
+        <Tooltip content="Click to switch between buttons or a slider!">
+          <Switch
+            className="text-white"
+            isSelected={useSliderSensor} // Use the state for toggle
+            onValueChange={(value) => {
+              setUseSliderSensor(value); // Handle the state change
+              // Restart the sensor animation
+              if (actionSensor.current) {
+                actionSensor.current.stop(); // Stop the current animation
+                actionSensor.current.reset(); // Reset the animation
+                actionSensor.current.play(); // Play the animation from the start
+              }
+            }}
+            color="primary"
+            size="lg"
+          >
+          </Switch>
+        </Tooltip>
         <p className="text-small text-default-500">
           Selected: {useSliderSensor ? "Slider" : "Buttons"}
         </p>

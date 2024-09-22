@@ -1,21 +1,16 @@
 // src/app/resume/page.js
 import React from 'react';
 import { Divider } from '@nextui-org/react';
+import {Button, ButtonGroup} from "@nextui-org/button";
 
 const ResumePage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
 
       {/* Download Link */}
-      <section className="mt-8">
-        <a 
-          href="/Nathan_Wakefield_Resume.pdf" 
-          className="text-3xl text-blue-500 underline" 
-          download
-        >
-          Download My Resume (PDF)
-        </a>
-      </section>
+      <Button color = "primary" size = "lg" radius = "sm">
+        <a href="/Nathan_Wakefield_Resume.pdf" download> Download My Resume (PDF) </a>
+      </Button>
 
       <Divider className="my-4" />
 
@@ -42,6 +37,9 @@ const ResumePage = () => {
           <li>NumPy</li>
           <li>Pandas</li>
           <li>MatPlotLib</li>
+          <li>Blender</li>
+          <li>Fusion 360</li>
+          <li>SolidWorks</li>
         </ul>
       </section>
       

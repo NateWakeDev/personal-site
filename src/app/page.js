@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Divider } from "@nextui-org/divider";
 import { Code } from '@nextui-org/code';
 import './globals.css';
+import { Progress } from '@nextui-org/progress';
 
 const HomePage = () => {
   // Array of phrases to rotate through
@@ -17,16 +18,38 @@ const HomePage = () => {
     'Photography & Videography Enthusiast',
   ];
 
-  const skills = [
-    "Python",
-    "C",
-    "JavaScript",
+  const programmingLanguages = [
+    { title: "Python",
+      years: 5,
+    },
+    { title: "C++",
+      years: 4,
+    },
+    { title: "C",
+      years: 3,
+    },
+    {
+      title: "JavaScript",
+      years: 2,
+    },
+    {
+      title: "SQL",
+      years: 2,
+    },
+  ];
+
+  const otherSkills = [
     "Automation",
     "Data Visualization",
     "Software Design",
     "Debugging",
     "Git",
-    "NumPy, Pandas, Matplotlib"
+    "NumPy",
+    "Pandas",
+    "Matplotlib",
+    "Blender",
+    "Fusion 360",
+    "SolidWorks",
   ];
 
   // State to keep track of the current phrase
@@ -77,11 +100,25 @@ const HomePage = () => {
       
       <Divider className="my-4" />
 
+      {/* Programming Languages Section */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-4">Programming Languages</h2>
+        <section>
+          {programmingLanguages.map((language, index) => (
+            <div key={index} className="flex flex-row items-center">
+              <div className="text-2xl font-bold">{language.title}</div>
+              <Progress className="px-2" aria-label={language.title} value={language.years} maxValue='5' color="primary" size="sm"/>
+              <div className="text-2xl whitespace-pre">{language.years} years</div>
+            </div>
+          ))}
+        </section>
+      </div>
+
       {/* Skills Section */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Skills</h2>
+        <h2 className="text-2xl font-bold mb-4">Other Skills</h2>
         <div className="flex flex-wrap gap-4">
-          {skills.map((skill, index) => (
+          {otherSkills.map((skill, index) => (
             <div key={index} className="flex items-center justify-center bg-gray-800 p-2 rounded">
               {skill}
             </div>
