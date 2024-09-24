@@ -105,10 +105,23 @@ const HomePage = () => {
         <h2 className="text-2xl font-bold mb-4">Programming Languages</h2>
         <section>
           {programmingLanguages.map((language, index) => (
-            <div key={index} className="flex flex-row items-center">
-              <div className="text-2xl font-bold">{language.title}</div>
-              <Progress className="px-2" aria-label={language.title} value={language.years} maxValue='5' color="primary" size="sm"/>
-              <div className="text-2xl whitespace-pre">{language.years} years</div>
+            <div
+              key={index}
+              className="flex items-center mb-2"
+              style={{ gap: '1rem' }} // Adds consistent spacing between elements
+            >
+              <div className="w-40 text-2xl font-bold text-right">{language.title}</div> {/* Fixed width for titles */}
+              <div className="flex-grow">
+                <Progress
+                  aria-label={language.title}
+                  value={language.years}
+                  maxValue="5"
+                  color="primary"
+                  size="sm"
+                  className="w-full" // Ensures the progress bar takes the remaining space
+                />
+              </div>
+              <div className="text-2xl">{language.years} years</div> {/* Consistent spacing */}
             </div>
           ))}
         </section>
