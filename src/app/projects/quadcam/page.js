@@ -132,15 +132,15 @@ export default function QuadcamProject() {
         <Divider className="my-4" />
 
         <h2 className="text-2xl font-bold mt-4 mb-4">How the Nishika 8000D Works:</h2>
-            <Image src="/images/projects/quadcam/nishika-8000d.jpg" alt="Nishika 8000D Camera" className='w-full sm:w-3/4 md:w-1/2 h-auto' />
+            <Image src="/images/projects/quadcam/nishika-8000D.jpg" alt="Nishika 8000D Camera" className='w-full sm:w-3/4 md:w-1/2 h-auto' />
             <p className="text-lg mt-4 mb-4">
                 The Nishika 8000D is a 35mm film camera that captures 4 photos simultaneously. The camera has 4 lenses and 4 shutters that are triggered at the same time.
             </p>
-            <Image src="/images/projects/quadcam/nishika-8000d-x4.jpg" alt="Nishika 8000D Film Roll" className='w-full sm:w-3/4 md:w-1/2 h-auto' />
+            <Image src="/images/projects/quadcam/nishika-8000D-x4.jpg" alt="Nishika 8000D Film Roll" className='w-full sm:w-3/4 md:w-1/2 h-auto' />
             <p className="text-lg mt-4 mb-4">
                 The film is then developed and the photos are stitched together to create a gif that has qualities of a 3D image.
             </p>
-            <Image src="/images/projects/quadcam/nishika-8000d-gif1.gif" alt="Nishika 8000D 3D Gif" className='w-full sm:w-3/4 md:w-1/2 h-auto' />
+            <Image src="/images/projects/quadcam/nishika-8000D-gif1.gif" alt="Nishika 8000D 3D Gif" className='w-full sm:w-3/4 md:w-1/2 h-auto' />
 
         <Divider className="my-4" />
 
