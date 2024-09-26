@@ -1,17 +1,20 @@
 // src/app/resume/page.js
 import React from 'react';
 import { Divider } from '@nextui-org/react';
-import {Button, ButtonGroup} from "@nextui-org/button";
+import { Button, ButtonGroup } from "@nextui-org/button";
+import { Link } from "@nextui-org/react";
 
 const ResumePage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
 
       {/* Download Link */}
-      <Button color = "primary" size = "lg" radius = "sm">
-        <a href="/Nathan_Wakefield_Resume.pdf" download> Download My Resume (PDF) </a>
-      </Button>
-
+      <Link href="/Nathan_Wakefield_Resume.pdf">
+        <Button color = "primary" size = "lg" radius = "sm">
+          Download My Resume (PDF)
+        </Button>
+      </Link>
+      
       <Divider className="my-4" />
 
       <h1 className="text-4xl font-bold mb-4">Nathan J. Wakefield</h1>
