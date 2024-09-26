@@ -5,6 +5,7 @@ import { Divider } from "@nextui-org/divider";
 import { Code } from '@nextui-org/code';
 import './globals.css';
 import { Progress } from '@nextui-org/progress';
+import { Link } from '@nextui-org/link';
 
 const HomePage = () => {
   // Array of phrases to rotate through
@@ -50,6 +51,64 @@ const HomePage = () => {
     "Blender",
     "Fusion 360",
     "SolidWorks",
+  ];
+
+  const projectList = [
+    {
+      title: "CSULB SAE Data Acquisitions Lead",
+      date: "April 2024 - Present",
+      bullets: [
+        'Managed GitHub projects for CAD, programming, and datasheets.',
+        'Refactored programs for Arduinos and ESP32s.',
+        'Designed an embedded system with GPS, G-force, and many other sensors.',
+      ],
+      link: "/projects/sensors",
+      linkText: "View Schematic Information",
+      isDisabled: false,
+    },
+    {
+      title: "Customer Review Request Automation",
+      date: "Developed January 2022 - April 2024",
+      bullets: [
+        'Automated data entry tasks, saving 4+ hours weekly with Python and Selenium.',
+        'Utilized NumPy for CSV manipulation and data preprocessing.',
+      ],
+      link: "/projects/automation",
+      linkText: "View Automation Details",
+      isDisabled: true,
+    },
+    {
+      title: "Photography and Videography Library Backup",
+      date: "Developed August 2023 - October 2023 -- Still in Development",
+      bullets: [
+        'Automated organization of over 2TB of multimedia files.',
+        'Implemented duplicate detection using average per-pixel RGB values.',
+      ],
+      link: "/projects/backup",
+      linkText: "View Backup Details",
+      isDisabled: true,
+    },
+    {
+      title: "Quadroscoptic Lenticular Camera",
+      date: "Developed December 2023 - January 2023",
+      bullets: [
+        'Inspiration from the Nishika 8000D 3D Film Camera.',
+        'Used Fusion 360 to design the camera, Blender to animate the design.',
+      ],
+      link: "/projects/quadcam",
+      linkText: "View Camera Details",
+      isDisabled: false,
+    },
+    {
+      title: "If you want to see more projects...",
+      date: "",
+      bullets: [
+        'Check out the projects page for more information.',
+      ],
+      link: "/projects",
+      linkText: "View More Projects",
+      isDisabled: false,
+    }
   ];
 
   // State to keep track of the current phrase
@@ -143,34 +202,34 @@ const HomePage = () => {
 
       {/* Project Experience Section */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Project Experience</h2>
-        <div className="mb-4">
-              <h3 className="text-xl font-bold">CSULB SAE Data Acquisitions Lead</h3>
-              <ul className="list-disc pl-5">
-                <li>Managed GitHub projects for CAD, programming, and datasheets.</li>
-                <li>Refactored programs for Arduinos and ESP32s.</li>
-                <li>Spearheaded the design of a new embedded system, using GPS, G&#45;force, suspension ride height, and temperature sensors.</li>
-                <li>Designed and 3D printed housings for data components.</li>
-              </ul>
-              <h3 className="text-xl font-bold">
-                You can see these projects located: <a href="/projects" className="text-blue-500 underline">here</a>!
-              </h3>
-            </div>
-          <div className="mb-4">
-            <h3 className="text-xl font-bold">Customer Review Request Automation</h3>
-            <ul className="list-disc pl-5">
-              <li>Automated data entry tasks, saving 4+ hours weekly using Python and Selenium.</li>
-              <li>Utilized NumPy for CSV manipulation and data preprocessing.</li>
+      <h2 className="text-2xl font-bold mb-4">Project Experience</h2>
+      <div className="flex gap-6 overflow-x-auto">
+        {projectList.map((project, index) => (
+          <div
+            key={index}
+            className="min-w-[250px] max-w-sm border border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 flex-shrink-0"
+          >
+            <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+            <p className="text-sm text-gray-500 mb-2">{project.date}</p>
+            <ul className="list-disc pl-5 text-sm mb-4">
+              {project.bullets.map((bullet, i) => (
+                <li key={i}>{bullet}</li>
+              ))}
             </ul>
-            </div>
-          <div className="mb-8">
-            <h3 className="text-xl font-bold">Photography and Videography Library Backup</h3>
-            <ul className="list-disc pl-5">
-              <li>Automated renaming and organization of over 2TB of multimedia files.</li>
-              <li>Implemented duplicate detection using average per-pixel RGB values.</li>
-            </ul>
-            </div>
+            <Link href={project.link} passHref legacyBehavior isDisabled={project.isDisabled}>
+              <Code
+                color="primary"
+                size="lg"
+                className={project.isDisabled ? 'pointer-events-none text-gray-400' : ''}
+                style={{ cursor: project.isDisabled ? 'not-allowed' : 'pointer' }}
+              >
+                {project.isDisabled ? 'Page coming Soon...' : project.linkText}
+              </Code>
+            </Link>
           </div>
+        ))}
+      </div>
+    </div>
 
       <Divider className="my-4" />
 
