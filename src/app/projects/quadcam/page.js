@@ -9,6 +9,7 @@ import { Divider } from '@nextui-org/divider';
 import { Switch } from '@nextui-org/switch';
 import { Slider } from '@nextui-org/slider';
 import { Image } from '@nextui-org/image';
+import { Chip } from '@nextui-org/chip';
 
 function CameraModel({ isPausedCamera, sliderValueCamera, useSliderCamera }) {
     const { scene: sceneCamera, animations: animationsCamera } = useGLTF('../models/Quadroscopic_Camera_Whole.glb');
@@ -146,7 +147,7 @@ export default function QuadcamProject() {
 
         <h2 className="text-2xl font-bold mt-4">How can I recreate this?</h2>
         <p className="text-lg mt-4 mb-4">
-            Well, it was a bit difficult trying to get everything to work with no reference whatsoever, but I was able to get some test footage out of it, and soon I will have it fully working. Credit to <a href='https://github.com/MarkCarsonDev' className="text-blue-500 underline">Mark Carson</a> for help with this project!
+            Well, it was a bit difficult trying to get everything to work with no reference whatsoever, but I was able to get some test footage out of it, and soon I will have it fully working. Credit to <a href='https://github.com/MarkCarsonDev'><Chip color="primary">Mark Carson</Chip></a> for help with this project!
         </p>
         {/* Whole Camera Model */}
         <h2 className="text-2xl font-bold mb-4">360° Camera View</h2>
