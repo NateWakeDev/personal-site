@@ -20,13 +20,16 @@ const HomePage = () => {
   ];
 
   const programmingLanguages = [
-    { title: "Python",
+    {
+      title: "Python",
       years: 5,
     },
-    { title: "C++",
+    {
+      title: "C++",
       years: 4,
     },
-    { title: "C",
+    {
+      title: "C",
       years: 3,
     },
     {
@@ -66,6 +69,19 @@ const HomePage = () => {
       linkText: "View Schematic Information",
       isDisabled: false,
     },
+
+    {
+      title: "Quadroscoptic Lenticular Camera",
+      date: "Developed December 2023 - January 2024",
+      bullets: [
+        'Inspiration from the Nishika 8000D 3D Film Camera.',
+        'Used Fusion 360 to design the camera, Blender to animate the design.',
+      ],
+      link: "/projects/quadcam",
+      linkText: "View Camera Details",
+      isDisabled: false,
+    },
+
     {
       title: "Customer Review Request Automation",
       date: "Developed January 2022 - April 2024",
@@ -77,6 +93,7 @@ const HomePage = () => {
       linkText: "View Automation Details",
       isDisabled: true,
     },
+
     {
       title: "Photography and Videography Library Backup",
       date: "Developed August 2023 - October 2023 -- Still in Development",
@@ -88,17 +105,7 @@ const HomePage = () => {
       linkText: "View Backup Details",
       isDisabled: true,
     },
-    {
-      title: "Quadroscoptic Lenticular Camera",
-      date: "Developed December 2023 - January 2023",
-      bullets: [
-        'Inspiration from the Nishika 8000D 3D Film Camera.',
-        'Used Fusion 360 to design the camera, Blender to animate the design.',
-      ],
-      link: "/projects/quadcam",
-      linkText: "View Camera Details",
-      isDisabled: false,
-    },
+
     {
       title: "If you want to see more projects...",
       date: "",
@@ -143,7 +150,7 @@ const HomePage = () => {
       <div className="mt-8 mb-8">
         <h2 className="text-2xl font-bold mb-4">About Me</h2>
         <p className="text-lg">
-          Hello! My name is <Code color="primary" size="lg">Nate</Code> and I am a <Code color="primary" size="lg">Software Developer</Code>. Currently I am currently focused in embedded programming, but have experience with web development, automation, application development, as well as UI/UX. 
+          Hello! My name is <Code color="primary" size="lg">Nate</Code> and I am a <Code color="primary" size="lg">Software Developer</Code>. Currently I am currently focused in embedded programming, but have experience with web development, automation, application development, as well as UI/UX.
         </p>
       </div>
 
@@ -156,7 +163,7 @@ const HomePage = () => {
           Currently, I am <Code color="primary" size="lg">Lead of Data Acquisitions</Code> for the <Code color="primary" size="lg">CSULB SAE team</Code>. I am responsible for managing and creating the system used to collect data on different aspects of the car. This includes the design of the system, the programming of the system, and the data analysis of the system.
         </p>
       </div>
-      
+
       <Divider className="my-4" />
 
       {/* Programming Languages Section */}
@@ -202,34 +209,34 @@ const HomePage = () => {
 
       {/* Project Experience Section */}
       <div className="mb-8">
-      <h2 className="text-2xl font-bold mb-4">Project Experience</h2>
-      <div className="flex gap-6 overflow-x-auto">
-        {projectList.map((project, index) => (
-          <div
-            key={index}
-            className="min-w-[250px] max-w-sm border border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 flex-shrink-0"
-          >
-            <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-            <p className="text-sm text-gray-500 mb-2">{project.date}</p>
-            <ul className="list-disc pl-5 text-sm mb-4">
-              {project.bullets.map((bullet, i) => (
-                <li key={i}>{bullet}</li>
-              ))}
-            </ul>
-            <Link href={project.link} passHref legacyBehavior isDisabled={project.isDisabled}>
-              <Code
-                color="primary"
-                size="lg"
-                className={project.isDisabled ? 'pointer-events-none text-gray-400' : ''}
-                style={{ cursor: project.isDisabled ? 'not-allowed' : 'pointer' }}
-              >
-                {project.isDisabled ? 'Page coming Soon...' : project.linkText}
-              </Code>
-            </Link>
-          </div>
-        ))}
+        <h2 className="text-2xl font-bold mb-4">Project Experience</h2>
+        <div className="flex gap-6 overflow-x-auto">
+          {projectList.map((project, index) => (
+            <div
+              key={index}
+              className="min-w-[250px] max-w-sm border border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 flex-shrink-0"
+            >
+              <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+              <p className="text-sm text-gray-500 mb-2">{project.date}</p>
+              <ul className="list-disc pl-5 text-sm mb-4">
+                {project.bullets.map((bullet, i) => (
+                  <li key={i}>{bullet}</li>
+                ))}
+              </ul>
+              <Link href={project.link} passHref legacyBehavior isDisabled={project.isDisabled}>
+                <Code
+                  color="primary"
+                  size="lg"
+                  className={project.isDisabled ? 'pointer-events-none text-gray-400' : ''}
+                  style={{ cursor: project.isDisabled ? 'not-allowed' : 'pointer' }}
+                >
+                  {project.isDisabled ? 'Page coming Soon...' : project.linkText}
+                </Code>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
 
       <Divider className="my-4" />
 
@@ -240,37 +247,37 @@ const HomePage = () => {
           <h3 className="text-xl font-bold">California State University, Long Beach</h3>
           <p className="italic">B.S. in Computer Science, August 2019 &#45; December 2024</p>
           <p>Relevant Coursework: Databases, Programming Language Principles, Algorithms, Data Structures, Object-Oriented Design, Python, Software Design Principles</p>
-          </div>
         </div>
-        
-        <Divider className="my-4" />
+      </div>
+
+      <Divider className="my-4" />
 
       {/* Work Experience Section */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Relevant Work Experience</h2>
         <div className="mb-4">
-            <h3 className="text-xl font-bold">Manager of Marketing and Social Media, DeLillo Chevrolet</h3>
-            <p className="italic">Jan. 2021 &#45; Present, Huntington Beach, CA</p>
-            <ul className="list-disc pl-5">
-              <li>Developed Python tooling to automate tasks, optimizing output.</li>
-              <li>Performed data analysis using Excel&apos;s visualization tools.</li>
-              <li>Maintained backend price management software.</li>
-              <li>Managed business marketing initiatives to drive sales and generate leads.</li>
-            </ul>
-          </div>
-          <div className="mb-8">
-            <h3 className="text-xl font-bold">3D Printing Technician, Self-Employed</h3>
-            <p className="italic">June 2017 &#45; Present, Long Beach, CA</p>
-            <ul className="list-disc pl-5">
-              <li>Created and shipped prototypes using CAD modeling and 3D printing.</li>
-              <li>Maintained 3D printers and automated print job workflows.</li>
-            </ul>
-          </div>
+          <h3 className="text-xl font-bold">Manager of Marketing and Social Media, DeLillo Chevrolet</h3>
+          <p className="italic">Jan. 2021 &#45; Present, Huntington Beach, CA</p>
+          <ul className="list-disc pl-5">
+            <li>Developed Python tooling to automate tasks, optimizing output.</li>
+            <li>Performed data analysis using Excel&apos;s visualization tools.</li>
+            <li>Maintained backend price management software.</li>
+            <li>Managed business marketing initiatives to drive sales and generate leads.</li>
+          </ul>
         </div>
+        <div className="mb-8">
+          <h3 className="text-xl font-bold">3D Printing Technician, Self-Employed</h3>
+          <p className="italic">June 2017 &#45; Present, Long Beach, CA</p>
+          <ul className="list-disc pl-5">
+            <li>Created and shipped prototypes using CAD modeling and 3D printing.</li>
+            <li>Maintained 3D printers and automated print job workflows.</li>
+          </ul>
+        </div>
+      </div>
 
-        
 
-      
+
+
     </div>
   );
 };

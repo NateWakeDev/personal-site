@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Canvas } from '@react-three/fiber';
-import SuspensionPreview from '../components/SuspensionPreview'; 
+import SuspensionPreview from '../components/SuspensionPreview';
 import SensorPreview from '../components/SensorPreview';
 import QuadCamPreview from '../components/QuadCamPreview';
 import { Card, CardBody, CardFooter, CardHeader, Divider } from "@nextui-org/react"
@@ -24,7 +24,7 @@ const ProjectsPage = () => {
       desc: "A 3D suspension simulation built with Three.js to visualize suspension behavior.",
       link: "/projects/suspension",
     },
-    { 
+    {
       title: "QuadCam",
       preview: QuadCamPreview,
       desc: "An overview of my Quadroscopic Lenticular Camera (Nishika 8000D Clone). Visualized with Three.js.",

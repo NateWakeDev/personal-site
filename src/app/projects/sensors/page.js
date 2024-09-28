@@ -32,7 +32,7 @@ const SensorsPage = () => {
         'First, the front ESP32 will wait for a signal from the dash ESP32 to start sending and collecting data.',
         'The front ESP32 is responsible for collecting data from the front suspension height sensors and the front brake temperature sensors.',
         'The front ESP32 will then send this data to the dash ESP32.',
-        { text: 'Components used: ', isBold: true, rest: '2 suspension height sensors (bottom-left, labeled: "aa-rot-120" -r and -l), 2 brake temperature sensors (top-middle, labeled: "brake-temp" -r and -l), and ESP32 (middle). Not-Pictured: logic level converter.'},
+        { text: 'Components used: ', isBold: true, rest: '2 suspension height sensors (bottom-left, labeled: "aa-rot-120" -r and -l), 2 brake temperature sensors (top-middle, labeled: "brake-temp" -r and -l), and ESP32 (middle). Not-Pictured: logic level converter.' },
       ],
     },
     {
@@ -50,16 +50,16 @@ const SensorsPage = () => {
       src: '/images/projects/sensors/rear_child_schematic.png',
       alt: 'Rear Child Schematic',
       description: 'This schematic details the rear-section ESP32 used for controlling and collecting the RPM.',
-      list:[
+      list: [
         'First, the rear ESP32 will wait for a signal from the dash ESP32 to start sending and collecting data.',
         'The rear ESP32 is responsible for collecting data from the CVT input and output RPM sensors.',
         'The rear ESP32 will then send this data to the dash',
-        { text: 'Components used: ', isBold: true, rest: '2 Hall-Effect RPM sensors (top-left, labeled: "hall-effect"), logic level converter (top-right, labeled: "logic-converter") and ESP32 (middle).'},
+        { text: 'Components used: ', isBold: true, rest: '2 Hall-Effect RPM sensors (top-left, labeled: "hall-effect"), logic level converter (top-right, labeled: "logic-converter") and ESP32 (middle).' },
       ],
     },
   ];
 
-  const gps = 
+  const gps =
     "This sensor will be used to determine the speed and location of the vehicle. By connecting to a GPS satellite this enables the module to collect longitude and latitude, as well as an accurate time stamp for recording sensor information. This will be helpful in determining lap times, as well as mapping the vehicle on a virtual track. \nSensor Used: Adafruit Ultimate GPS Breakout";
 
   const accelerometer =
@@ -83,21 +83,21 @@ const SensorsPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-4">Baja SAE ESP32 Systems</h1>
-      
+
       <h2 className="text-3xl font-semibold mb-4">Project Statement:</h2>
       <p className="text-lg mb-4">
-        The goal of this project is to design a system that can collect data from various sensors on the Baja SAE vehicle. 
+        The goal of this project is to design a system that can collect data from various sensors on the Baja SAE vehicle.
       </p>
       <p className="text-lg mb-8">
         Below are schematics showcasing the design and layout of different ESP32 systems involved in the project.
       </p>
       <p className="text-lg mb-8">
-      Keep in mind: Components that have 5v inputs and outputs are connected to a logic level converter to convert the signals from 5v to 3v as the ESP32 can only handle 3v for the input signals.
+        Keep in mind: Components that have 5v inputs and outputs are connected to a logic level converter to convert the signals from 5v to 3v as the ESP32 can only handle 3v for the input signals.
       </p>
 
       <Divider className="my-4" />
 
-    {/* Sensor Overview */}
+      {/* Sensor Overview */}
       <h2 className="text-3xl font-semibold mb-4">Sensor Overview:</h2>
       <Accordion variant="bordered" selectionMode="multiple" className="accordion-border">
         {/* Sensor Overview */}
@@ -131,16 +131,16 @@ const SensorsPage = () => {
 
       <Divider className="my-4" />
 
-    {/* Schematics */}
+      {/* Schematics */}
       <h2 className="text-3xl font-semibold mt-8 mb-4">Schematics Overview:</h2>
 
       {/* Map over the images array to display each image with its heading, description, and list */}
       {images.map((image, index) => (
         <div key={index} className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">{image.alt}</h2>
-          <Image 
-            src={image.src} 
-            alt={image.alt} 
+          <Image
+            src={image.src}
+            alt={image.alt}
             className="w-full sm:w-3/4 md:w-1/2 h-auto mb-4 border-2 border-gray-300 rounded-md"
           />
           <p className="text-lg">{image.description}</p>
@@ -163,9 +163,9 @@ const SensorsPage = () => {
         </div>
       ))}
 
-    <Divider className="my-4" />
+      <Divider className="my-4" />
 
-    {/* System Communication */}
+      {/* System Communication */}
       <h1 className="text-4xl font-bold mb-4">ESP32 System Communication</h1>
       <p className="text-lg mb-8">
         All sensors communicate with each other using the ESPNOW protocol. This allows for low latency and high-speed communication between the ESP32 modules. As stated earlier: the Front, Mid, and Rear ESP32s each receive data from their respective sensors and send it to the Dash ESP32. The Dash ESP32 then sends the data to the SD card. After recording, a computer will be used for post-processing.
@@ -176,11 +176,11 @@ const SensorsPage = () => {
 
       <Divider className="my-4" />
 
-    {/* Up Next */}
+      {/* Up Next */}
       <h1 className="text-4xl font-bold mb-4">Up Next...</h1>
-        <p className="text-lg mb-8">
-          Now that the ESP32 systems are designed and the sensors are chosen and wired correctly, the next step is to verify the system is working as intended. We will be doing this by having a Raspberry Pi computer receive the data from the Parent ESP32 via a LoRa module. This will allow us to see the data in real-time and verify that the data is being collected, sent and received correctly. This will also allow us to record the data in a different location for redundancy. Project updates will be posted as we progress.
-        </p>
+      <p className="text-lg mb-8">
+        Now that the ESP32 systems are designed and the sensors are chosen and wired correctly, the next step is to verify the system is working as intended. We will be doing this by having a Raspberry Pi computer receive the data from the Parent ESP32 via a LoRa module. This will allow us to see the data in real-time and verify that the data is being collected, sent and received correctly. This will also allow us to record the data in a different location for redundancy. Project updates will be posted as we progress.
+      </p>
     </div>
   );
 };

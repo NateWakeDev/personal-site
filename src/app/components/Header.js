@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import Image from 'next/image';
 const Header = () => {
   return (
@@ -12,7 +12,7 @@ const Header = () => {
           <span>Nathan Wakefield</span>
         </Link>
         <div>
-        
+
           <Link href="/resume" className="text-white mr-4">
             Resume
           </Link>
@@ -22,7 +22,7 @@ const Header = () => {
           <Link href="/contact" className="text-white">
             Contact
           </Link>
-        
+
         </div>
       </div>
     </nav>

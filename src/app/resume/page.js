@@ -10,11 +10,11 @@ const ResumePage = () => {
 
       {/* Download Link */}
       <Link href="/Nathan_Wakefield_Resume.pdf">
-        <Button color = "primary" size = "lg" radius = "sm">
+        <Button color="primary" size="lg" radius="sm">
           Download My Resume (PDF)
         </Button>
       </Link>
-      
+
       <Divider className="my-4" />
 
       <h1 className="text-4xl font-bold mb-4">Nathan J. Wakefield</h1>
@@ -45,7 +45,7 @@ const ResumePage = () => {
           <li>SolidWorks</li>
         </ul>
       </section>
-      
+
       <Divider className="my-4" />
 
       {/* Work Experience Section */}
