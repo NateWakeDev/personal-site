@@ -6,6 +6,7 @@ import { Code } from '@nextui-org/code';
 import './globals.css';
 import { Progress } from '@nextui-org/progress';
 import { Link } from '@nextui-org/link';
+import { Center } from '@react-three/drei';
 
 const HomePage = () => {
   // Array of phrases to rotate through
@@ -145,9 +146,9 @@ const HomePage = () => {
           {phrases[currentPhraseIndex]}
         </p>
       </div>
-      
-      <iframe src="https://lumalabs.ai/embed/00e72c99-0aed-4278-8cdc-ed1d8062331f?mode=slf&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false" width="500" height="350" frameborder="0" title="luma embed"></iframe>
-      
+      <div className="mb-8 items-center">
+        <iframe src="https://lumalabs.ai/embed/00e72c99-0aed-4278-8cdc-ed1d8062331f?mode=slf&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false" width="500" height="350" frameborder="0" title="luma embed"></iframe>
+      </div>
       {/* About Me Section */}
       <div className="mt-8 mb-8">
         <h2 className="text-2xl font-bold mb-4">About Me</h2>
