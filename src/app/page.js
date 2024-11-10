@@ -146,7 +146,7 @@ const HomePage = () => {
         </p>
       </div>
       
-      <iframe src="https://lumalabs.ai/embed/00e72c99-0aed-4278-8cdc-ed1d8062331f?mode=slf&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false" width="375" height="500" frameborder="0" title="luma embed" style="border: none;"></iframe>
+      <iframe src="https://lumalabs.ai/embed/00e72c99-0aed-4278-8cdc-ed1d8062331f?mode=slf&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false" width="500" height="350" frameborder="0" title="luma embed"></iframe>
       
       {/* About Me Section */}
       <div className="mt-8 mb-8">
