@@ -146,9 +146,7 @@ const HomePage = () => {
           {phrases[currentPhraseIndex]}
         </p>
       </div>
-      <div className="mb-8 items-center">
-        <iframe src="https://lumalabs.ai/embed/00e72c99-0aed-4278-8cdc-ed1d8062331f?mode=slf&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false" width="500" height="350" frameborder="0" title="luma embed"></iframe>
-      </div>
+
       {/* About Me Section */}
       <div className="mt-8 mb-8">
         <h2 className="text-2xl font-bold mb-4">About Me</h2>
@@ -165,6 +163,9 @@ const HomePage = () => {
         <p className="text-lg">
           Currently, I am <Code color="primary" size="lg">Lead of Data Acquisitions</Code> for the <Code color="primary" size="lg">CSULB SAE team</Code>. I am responsible for managing and creating the system used to collect data on different aspects of the car. This includes the design of the system, the programming of the system, and the data analysis of the system.
         </p>
+        <div className="flex justify-center mb-8">
+          <iframe src="https://lumalabs.ai/embed/00e72c99-0aed-4278-8cdc-ed1d8062331f?mode=slf&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false" width="750" height="350" frameborder="0" title="luma embed" className='items-center'></iframe>
+        </div>
       </div>
 
       <Divider className="my-4" />
